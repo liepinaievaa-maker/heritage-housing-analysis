@@ -2,13 +2,12 @@
 
 # Heritage Housing Analysis
 
-## Template Instructions
+## Project Overview
 
-Welcome,
+This project investigates the factors that influence residential property prices in Ames, Iowa. Using historical housing data, the project explores the relationships between house attributes and sale prices before developing a machine learning model capable of predicting the sale price of a property.
 
-This is the Code Institute student template for the Heritage Housing project option in Predictive Analytics. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions. Click the `Use this template` button above to get started.
+The project has been developed to address the business requirements of a fictional client who inherited four houses in Ames, Iowa and would like to estimate their market value while also understanding which property characteristics have the greatest impact on house prices.
 
-You can safely delete the Template Instructions section of this README.md file,  and modify the remaining paragraphs for your own project. Please do read the Template Instructions at least once, though! It contains some important information about the IDE and the extensions we use.
 
 ## How to use this repo
 
