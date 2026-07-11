@@ -8,7 +8,7 @@
 
 - This project investigates the factors that influence residential property prices in Ames, Iowa. Using historical housing data, the project explores the relationships between house attributes and sale prices before developing a machine learning model capable of predicting the sale price of a property.
 
-- The project has been developed to address the business requirements of a fictional client who inherited four houses in Ames, Iowa and would like to estimate their market value while also understanding which property characteristics have the greatest impact on house prices.
+- This project was developed in response to a business scenario in which a client inherited four residential properties in Ames, Iowa. The objective is to understand which property characteristics influence sale price and to build a machine learning model capable of estimating property values.
 
 ##  Business Problem
 
@@ -156,16 +156,47 @@ Predict the sale price of inherited houses and other properties.
 
 ## ML Business Case
 
-* In the previous bullet, you potentially visualised an ML task to answer a business requirement. You should frame the business case using the method we covered in the course.
+- The business objective of this project is to support the client in estimating realistic sale prices for residential properties located in Ames, Iowa.
+
+- This problem is formulated as a **supervised machine learning regression task**, where the model learns the relationship between house characteristics and the corresponding sale price from historical data.
+
+### Inputs
+
+The model uses property characteristics such as:
+
+* Overall quality
+* Ground living area
+* Basement area
+* Garage size
+* Lot size
+* Year built
+* Porch and deck areas
+* Kitchen quality
+* Additional engineered features created during data preparation
+
+### Target
+
+The target variable is **SalePrice**, representing the final selling price of each property.
+
+### Success Criteria
+
+The project was considered successful if the predictive model achieved an R² score greater than 0.75 on unseen data.
+
+The final Linear Regression model achieved an **R² score of 0.8477**, exceeding the agreed business requirement and demonstrating that the selected features provide a reliable basis for predicting residential property prices.
+
 
 ## Dashboard Design
 
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items that your dashboard library supports.
-* Eventually, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but eventually you needed to use another plot type)
 
 ## Unfixed Bugs
 
-* You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not valid reason to leave bugs unfixed.
+At the time of submission, no critical bugs affecting the functionality of the notebooks were identified.
+
+Future improvements include:
+
+- Comparing additional machine learning models.
+- Expanding the Streamlit dashboard with more interactive visualisations.
+- Improving feature engineering with additional domain-specific variables.
 
 ## Deployment
 
@@ -188,8 +219,21 @@ Predict the sale price of inherited houses and other properties.
 
 ## Credits
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism.
-* You can break the credits section up into Content and Media, depending on what you have included in your project.
+### Dataset
+
+- Code Institute Heritage Housing dataset (hosted on Kaggle)
+
+### Learning Resources
+
+- Code Institute Predictive Analytics walkthrough materials
+- Scikit-learn documentation
+- Pandas documentation
+- Matplotlib documentation
+- Seaborn documentation
+
+### Acknowledgements
+
+Thanks to the Code Institute Predictive Analytics course for providing the project brief and supporting learning materials.
 
 ### Content
 
