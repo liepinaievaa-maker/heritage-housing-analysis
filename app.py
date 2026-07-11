@@ -27,7 +27,7 @@ page = st.sidebar.radio(
 )
 
 if page == "Project Overview":
-    st.title("🏠 Heritage Housing Analysis")
+    st.title("Heritage Housing Analysis")
 
     st.write("""
     Welcome to the Heritage Housing Analysis dashboard.
@@ -48,17 +48,38 @@ elif page == "Business Understanding":
     """)
 
     st.subheader("Project Hypotheses")
-
     st.markdown("""
-    - Houses with higher overall quality are expected to have higher sale prices.
+    - Houses with higher overall quality are expected to have 
+                higher sale prices.
     - Larger living areas are expected to increase house prices.
     - Newer houses are expected to sell for higher prices.
     - Houses with garages are expected to have higher sale prices.
     - Feature engineering is expected to improve model performance.
     """)
 
+    st.subheader("Hypothesis Validation")
+
+    st.markdown("""
+    ### Validation Results
+
+    - **Higher Overall Quality:** Supported. Houses with higher quality
+                ratings generally achieved higher sale prices.
+
+    - **Larger Living Area:** Supported. GrLivArea was one of the strongest
+                features correlated with SalePrice.
+
+    - **Newer Houses:** Partially supported. Newer homes tended 
+                to sell for more, although other factors also influenced price.
+
+    - **Garage Presence:** Supported. Houses with
+                 garages generally sold for higher prices.
+
+    - **Feature Engineering:** Supported. The engineered features 
+                contributed to a model with an R² score of **0.8477**.
+    """)
+
 elif page == "Data Exploration":
-    st.title("📊 Data Exploration")
+    st.title("Data Exploration")
 
     st.write(
         "The dataset below contains the cleaned and engineered housing data "
@@ -111,15 +132,45 @@ elif page == "Data Exploration":
 
     st.pyplot(fig)
 
+    st.subheader("Sale Price by Overall Quality")
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    sns.boxplot(
+        data=df,
+        x="OverallQual",
+        y="SalePrice",
+        ax=ax
+    )
+
+    ax.set_xlabel("Overall Quality")
+    ax.set_ylabel("Sale Price")
+
+    st.pyplot(fig)
+
+    st.info(
+        "Higher Overall Quality ratings are associated with higher house sale" \
+        "prices, supporting one of the project's initial hypotheses."
+    )
+
 elif page == "Model Performance":
-    st.title("🤖 Model Performance")
+    st.title("Model Performance")
 
-    st.write("""
-    Linear Regression Results
+    st.write(
+        "The Linear Regression model was evaluated on unseen test data."
+    )
 
-    • MAE: 21,242.82
+    col1, col2, col3 = st.columns(3)
 
-    • RMSE: 34,178.36
+    col1.metric("Mean Absolute Error", "21,242.82")
+    col2.metric("Root Mean Squared Error", "34,178.36")
+    col3.metric("R² Score", "0.8477")
 
-    • R² Score: 0.8477
-    """)
+    st.subheader("Model Interpretation")
+
+    st.write(
+        "The model explains approximately 84.8% of the variation in house "
+        "sale prices. The Mean Absolute Error indicates "
+        "that predictions differ "
+        "from actual sale prices by approximately 21,243 on average."
+    )
