@@ -28,49 +28,72 @@
 
 ##  Project Hypotheses
 
-The following hypotheses were established before modeling:
+Before analysing the dataset, the following hypotheses were established:
 
-- Houses with higher overall quality are expected to have higher sale prices.
-- Larger living areas are expected to increase house prices.
-- Newer houses are expected to sell for higher prices than older houses.
-- Houses with garages are expected to have higher sale prices.
-- Feature engineering is expected to improve model performance.
+### Hypothesis 1
+Properties with higher overall quality tend to achieve higher sale prices.
+
+**Validation**
+
+Confirmed.
+
+The correlation analysis showed that `OverallQual` has the strongest positive correlation with `SalePrice` (0.79).
+
+---
+
+### Hypothesis 2
+
+Larger living areas contribute to higher sale prices.
+
+**Validation**
+
+Confirmed.
+
+`GrLivArea` was identified as one of the strongest predictors with a correlation coefficient of approximately 0.71.
+
+---
+
+### Hypothesis 3
+
+Feature engineering improves predictive performance.
+
+**Validation**
+
+Partially confirmed.
+
+The engineered features improved the dataset used for modelling and contributed to an R² score of 0.8477.
 
 
-## How to use this repo
+## Exploratory Data Analysis
 
-1. Use this template to create your GitHub project repo
+The exploratory analysis identified several important insights.
 
-2. In your new repo click on the green Code button
+- OverallQual showed the strongest positive correlation with SalePrice.
+- GrLivArea was the second strongest predictor.
+- SalePrice follows a positively skewed distribution.
+- Several garage and basement variables required missing-value treatment before modelling.
 
-3. Then, from the Codespaces tab, click Create codespace on main.
+## Hypothesis and how to validate?
 
-5. Wait for the workspace to open. This can take a few minutes.
+### Hypothesis Validation
 
-6. Open a new terminal and `pip3 install -r requirements.txt`
+The hypotheses defined at the beginning of the project were evaluated using exploratory data analysis and model performance.
 
-7. Open the jupyter_notebooks directory and click on the notebook you want to open.
-
-8. Click the kernel button and choose Python Environments.
-
-Note that the kernel says Python 3.12.1 as it inherits from the workspace so it will be Python-3.12.1 as installed by Codespaces. To confirm this you can use `! python --version` in a notebook code cell.
-
-## Cloud IDE Reminders
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In your Cloud IDE, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with *Regenerate API Key*.
+| Hypothesis | Result |
+|------------|--------|
+| Higher overall quality leads to higher sale prices. | Confirmed |
+| Larger living areas are associated with higher sale prices. | Confirmed |
+| Feature engineering improves the predictive model. | Partially confirmed |
 
 ## Dataset Content
 
 * The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data). We then created a fictitious user story where predictive analytics can be applied in a real project in the workplace.
 * The dataset has almost 1.5 thousand rows and represents housing records from Ames, Iowa, indicating house profile (Floor Area, Basement, Garage, Kitchen, Lot, Porch, Wood Deck, Year Built) and its respective sale price for houses built between 1872 and 2010.
+The dataset contains 1,460 residential properties from Ames, Iowa.
+
+Each observation includes structural characteristics, construction details, garage information, basement information and the final sale price.
+
+The target variable for the machine learning model is **SalePrice**.
 
 |Variable|Meaning|Units|
 |:----|:----|:----|
@@ -108,13 +131,28 @@ Although your friend has an excellent understanding of property prices in her ow
 * 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that.
 * 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa.
 
-## Hypothesis and how to validate?
+## Mapping Business Requirements to the Solution
 
-* List here your project hypothesis(es) and how you envision validating it (them).
+### Business Requirement 1
 
-## The rationale to map the business requirements to the Data Visualisations and ML tasks
+Identify which house characteristics have the strongest relationship with sale price.
 
-* List your business requirements and a rationale to map them to the Data Visualisations and ML tasks.
+**Approach**
+
+- Performed exploratory data analysis.
+- Generated correlation heatmaps.
+- Analysed feature correlations with SalePrice.
+- Visualised the distribution of sale prices.
+
+### Business Requirement 2
+
+Predict the sale price of inherited houses and other properties.
+
+**Approach**
+
+- Cleaned and prepared the dataset.
+- Engineered additional predictive features.
+- Trained and evaluated a Linear Regression model.
 
 ## ML Business Case
 
