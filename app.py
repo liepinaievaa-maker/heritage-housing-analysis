@@ -23,6 +23,7 @@ page = st.sidebar.radio(
         "Business Understanding",
         "Data Exploration",
         "Model Performance",
+        "House Price Prediction",
     ],
 )
 
@@ -149,8 +150,43 @@ elif page == "Data Exploration":
     st.pyplot(fig)
 
     st.info(
-        "Higher Overall Quality ratings are associated with higher house sale" \
+        "Higher Overall Quality ratings are associated" \
+        " with higher house sale" \
         "prices, supporting one of the project's initial hypotheses."
+    )
+
+    st.subheader("Sale Price vs Living Area")
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    ax.scatter(df["GrLivArea"], df["SalePrice"], alpha=0.5)
+
+    ax.set_xlabel("Ground Living Area")
+    ax.set_ylabel("Sale Price")
+    ax.set_title("Living Area vs Sale Price")
+
+    st.pyplot(fig)
+
+    st.info(
+      "Homes with larger living areas generally sell for higher prices, " \
+      "supporting the second hypothesis."
+    )
+
+    st.subheader("Sale Price vs Year Built")
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    ax.scatter(df["YearBuilt"], df["SalePrice"], alpha=0.5)
+
+    ax.set_xlabel("Year Built")
+    ax.set_ylabel("Sale Price")
+    ax.set_title("Year Built vs Sale Price")
+
+    st.pyplot(fig)
+
+    st.info(
+        "Newer houses generally achieve higher sale prices, " \
+        "although other factors also influence value."
     )
 
 elif page == "Model Performance":
@@ -174,3 +210,15 @@ elif page == "Model Performance":
         "that predictions differ "
         "from actual sale prices by approximately 21,243 on average."
     )
+
+st.title("House Price Prediction")
+
+st.write(
+    "This page will allow users to estimate the sale price of a house "
+    "by entering property characteristics."
+)
+
+st.info(
+    "Prediction functionality will be connected after the trained model "
+    "is exported."
+)
