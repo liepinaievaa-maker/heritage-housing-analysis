@@ -26,6 +26,16 @@
 - Evaluate model performance.
 - Predict house sale prices accurately.
 
+##  Project Hypotheses
+
+The following hypotheses were established before modeling:
+
+- Houses with higher overall quality are expected to have higher sale prices.
+- Larger living areas are expected to increase house prices.
+- Newer houses are expected to sell for higher prices than older houses.
+- Houses with garages are expected to have higher sale prices.
+- Feature engineering is expected to improve model performance.
+
 
 ## How to use this repo
 
