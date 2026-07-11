@@ -2,11 +2,29 @@
 
 # Heritage Housing Analysis
 
+- A machine learning project that analyzes residential property data and predicts house sale prices using Linear Regression. The project follows a complete data science workflow, including business understanding, data exploration, data cleaning, feature engineering, model training, and evaluation.
+
 ## Project Overview
 
-This project investigates the factors that influence residential property prices in Ames, Iowa. Using historical housing data, the project explores the relationships between house attributes and sale prices before developing a machine learning model capable of predicting the sale price of a property.
+- This project investigates the factors that influence residential property prices in Ames, Iowa. Using historical housing data, the project explores the relationships between house attributes and sale prices before developing a machine learning model capable of predicting the sale price of a property.
 
-The project has been developed to address the business requirements of a fictional client who inherited four houses in Ames, Iowa and would like to estimate their market value while also understanding which property characteristics have the greatest impact on house prices.
+- The project has been developed to address the business requirements of a fictional client who inherited four houses in Ames, Iowa and would like to estimate their market value while also understanding which property characteristics have the greatest impact on house prices.
+
+##  Business Problem
+
+- Buying and selling houses involves many factors that influence property value. Real estate companies and homeowners benefit from understanding which features have the greatest impact on sale prices.
+
+-  The objective of this project is to build a machine learning model capable of predicting house sale prices based on property characteristics while identifying the most influential features affecting price.
+
+##  Project Objectives
+
+- Explore the housing dataset.
+- Clean and preprocess the data.
+- Handle missing values.
+- Engineer new predictive features.
+- Train a Linear Regression model.
+- Evaluate model performance.
+- Predict house sale prices accurately.
 
 
 ## How to use this repo
