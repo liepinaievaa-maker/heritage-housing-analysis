@@ -211,14 +211,34 @@ elif page == "Model Performance":
         "from actual sale prices by approximately 21,243 on average."
     )
 
-st.title("House Price Prediction")
+elif page == "House Price Prediction":
+    st.title("House Price Prediction")
 
-st.write(
-    "This page will allow users to estimate the sale price of a house "
-    "by entering property characteristics."
-)
+    st.write("""
+    Enter the property characteristics below to estimate the predicted
+    sale price of a house in Ames, Iowa.
 
-st.info(
-    "Prediction functionality will be connected after the trained model "
-    "is exported."
-)
+    **Note:** This page is currently a demonstration. The prediction model
+    will be connected after the trained model is exported.
+    """)
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        overall_quality = st.slider("Overall Quality", 1, 10, 5)
+        living_area = st.number_input("Living Area (sq ft)", 300, 6000, 1500)
+        garage_area = st.number_input("Garage Area (sq ft)", 0, 1500, 500)
+
+    with col2:
+        year_built = st.number_input("Year Built", 1872, 2010, 2000)
+        lot_area = st.number_input("Lot Area (sq ft)", 1000, 250000, 9000)
+        kitchen_quality = st.selectbox(
+            "Kitchen Quality",
+            ["Poor", "Fair", "Typical", "Good", "Excellent"]
+        )
+
+    if st.button("Predict Sale Price"):
+        st.warning(
+            "Prediction functionality will be enabled once the trained model "
+            "is connected to the dashboard."
+        )
