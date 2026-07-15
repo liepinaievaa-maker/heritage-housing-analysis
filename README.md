@@ -178,6 +178,27 @@ The project was considered successful if the predictive model achieved an R² sc
 
 The final Linear Regression model achieved an **R² score of 0.8477**, exceeding the agreed business requirement and demonstrating that the selected features provide a reliable basis for predicting residential property prices.
 
+## House Price Prediction
+
+The Streamlit dashboard allows users to enter six important property
+characteristics:
+
+- Overall quality
+- Above-ground living area
+- Garage area
+- Year built
+- Lot area
+- Kitchen quality
+
+
+ The trained Linear Regression model uses these inputs to estimate the
+property's sale price. Features not entered through the form are assigned
+median values from the training dataset.
+
+Predictions are intended as data-driven estimates rather than professional
+property valuations. The model achieved an R² score of 0.8477 and a Mean
+Absolute Error of approximately $21,243 on unseen test data.
+
 
 ## Dashboard Design
 
