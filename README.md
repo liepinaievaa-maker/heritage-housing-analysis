@@ -191,7 +191,7 @@ characteristics:
 - Kitchen quality
 
 
- The trained Linear Regression model uses these inputs to estimate the
+The trained Linear Regression model uses these inputs to estimate the
 property's sale price. Features not entered through the form are assigned
 median values from the training dataset.
 
@@ -199,9 +199,39 @@ Predictions are intended as data-driven estimates rather than professional
 property valuations. The model achieved an R² score of 0.8477 and a Mean
 Absolute Error of approximately $21,243 on unseen test data.
 
+### Model Performance
+
+The model achieved the following results on unseen test data:
+
+- Mean Absolute Error: $21,242.82
+- Root Mean Squared Error: $34,178.36
+- R² Score: 0.8477
+
+These results indicate that the model explains approximately 84.8% of the variation in house sale prices.
 
 ## Dashboard Design
 
+The Streamlit dashboard contains five pages:
+
+### Project Overview
+
+- Introduces the project, its purpose, and the housing-price prediction objective.
+
+### Business Understanding
+
+- Explains the client problem, project hypotheses, and the validation results.
+
+### Data Exploration
+
+- Displays the dataset preview, sale-price distribution, correlation heatmap, top correlated features, and visualisations used to assess the hypotheses.
+
+### Model Performance
+
+- Presents MAE, RMSE, R², and a short interpretation of model performance.
+
+### House Price Prediction
+
+- Allows users to enter selected house characteristics and receive an estimated sale price from the trained model.
 
 ## Unfixed Bugs
 
