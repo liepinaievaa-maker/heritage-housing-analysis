@@ -1,4 +1,4 @@
-# ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+//** # ![CI logo]() **//
 
 # Heritage Housing Analysis
 
@@ -18,50 +18,87 @@
 
 ##  Project Objectives
 
-- Explore the housing dataset.
-- Clean and preprocess the data.
-- Handle missing values.
-- Engineer new predictive features.
-- Train a Linear Regression model.
-- Evaluate model performance.
-- Predict house sale prices accurately.
+The objectives of this project were to:
+
+- Understand the Ames Housing dataset.
+- Clean and prepare the data for analysis.
+- Engineer meaningful features to improve model performance.
+- Train and evaluate a Linear Regression model.
+- Export the trained model for deployment.
+- Build an interactive Streamlit dashboard for house price prediction.
 
 ##  Project Hypotheses
 
 Before analysing the dataset, the following hypotheses were established:
 
+The following hypotheses were investigated:
+
 ### Hypothesis 1
-Properties with higher overall quality tend to achieve higher sale prices.
 
-**Validation**
+Houses with higher Overall Quality ratings achieve higher sale prices.
 
-Confirmed.
-
-The correlation analysis showed that `OverallQual` has the strongest positive correlation with `SalePrice` (0.79).
+**Outcome:** Supported.
 
 ---
 
 ### Hypothesis 2
 
-Larger living areas contribute to higher sale prices.
+Larger living areas increase house sale prices.
 
-**Validation**
-
-Confirmed.
-
-`GrLivArea` was identified as one of the strongest predictors with a correlation coefficient of approximately 0.71.
+**Outcome:** Supported.
 
 ---
 
 ### Hypothesis 3
 
-Feature engineering improves predictive performance.
+Newer houses generally sell for higher prices.
 
-**Validation**
+**Outcome:** Partially supported.
 
-Partially confirmed.
+---
 
-The engineered features improved the dataset used for modelling and contributed to an R² score of 0.8477.
+### Hypothesis 4
+
+Feature engineering improves prediction performance.
+
+**Outcome:** Supported.
+
+---
+
+### Hypothesis 5
+
+Garage size contributes positively to house value.
+
+**Outcome:** Supported.
+
+
+## Project Workflow (CRISP-DM)
+
+This project follows the CRISP-DM methodology:
+
+## 1. Business Understanding
+
+Understanding the client's objective of estimating inherited property values.
+
+## 2. Data Understanding
+
+Exploring the Ames Housing dataset and identifying important variables.
+
+## 3. Data Preparation
+
+Cleaning missing values, encoding categorical variables, scaling features where appropriate, and engineering additional features.
+
+## 4. Modelling
+
+Training and evaluating a Linear Regression model.
+
+## 5. Evaluation
+
+Assessing model performance using MAE, RMSE, R² score, and prediction visualisations.
+
+## 6. Deployment
+
+Deploying the trained model within a Streamlit dashboard.
 
 
 ## Exploratory Data Analysis
@@ -73,17 +110,6 @@ The exploratory analysis identified several important insights.
 - SalePrice follows a positively skewed distribution.
 - Several garage and basement variables required missing-value treatment before modelling.
 
-## Hypothesis and how to validate?
-
-### Hypothesis Validation
-
-The hypotheses defined at the beginning of the project were evaluated using exploratory data analysis and model performance.
-
-| Hypothesis | Result |
-|------------|--------|
-| Higher overall quality leads to higher sale prices. | Confirmed |
-| Larger living areas are associated with higher sale prices. | Confirmed |
-| Feature engineering improves the predictive model. | Partially confirmed |
 
 ## Dataset Content
 
@@ -116,6 +142,7 @@ Key variables include:
 | BedroomAbvGr | Number of bedrooms above ground. |
 | YearRemodAdd | Year of the most recent renovation or remodel. |
 
+
 ## Business Requirements
 
 As a good friend, you are requested by your friend, who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, to  help in maximising the sales price for the inherited properties.
@@ -124,6 +151,14 @@ Although your friend has an excellent understanding of property prices in her ow
 
 * 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that.
 * 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa.
+
+The project addresses the following business requirements:
+
+- Analyse the Ames Housing dataset to identify the factors that most strongly influence house sale prices.
+- Investigate relationships between house characteristics and sale price through exploratory data analysis.
+- Develop a machine learning model capable of predicting house sale prices from property characteristics.
+- Create an interactive dashboard that allows users to explore the dataset, review the model performance, and generate estimated sale prices for individual properties.
+
 
 ## Mapping Business Requirements to the Solution
 
@@ -154,6 +189,7 @@ Predict the sale price of inherited houses and other properties.
 
 - This problem is formulated as a **supervised machine learning regression task**, where the model learns the relationship between house characteristics and the corresponding sale price from historical data.
 
+
 ### Inputs
 
 The model uses property characteristics such as:
@@ -178,6 +214,7 @@ The project was considered successful if the predictive model achieved an R² sc
 
 The final Linear Regression model achieved an **R² score of 0.8477**, exceeding the agreed business requirement and demonstrating that the selected features provide a reliable basis for predicting residential property prices.
 
+
 ## House Price Prediction
 
 The Streamlit dashboard allows users to enter six important property
@@ -199,15 +236,56 @@ Predictions are intended as data-driven estimates rather than professional
 property valuations. The model achieved an R² score of 0.8477 and a Mean
 Absolute Error of approximately $21,243 on unseen test data.
 
-### Model Performance
 
-The model achieved the following results on unseen test data:
+## Model Evaluation
 
-- Mean Absolute Error: $21,242.82
-- Root Mean Squared Error: $34,178.36
-- R² Score: 0.8477
+A Linear Regression model was trained using the cleaned and engineered housing dataset.
 
-These results indicate that the model explains approximately 84.8% of the variation in house sale prices.
+The data was split into:
+
+- 80% training data
+- 20% test data
+- `random_state=42` for reproducibility
+
+The model achieved the following results:
+
+| Metric | Result |
+|---|---:|
+| Training R² | 0.8141 |
+| Test R² | 0.8477 |
+| Mean Absolute Error | $21,242.82 |
+| Root Mean Squared Error | $34,178.36 |
+
+The test R² score indicates that the model explains approximately 84.8% of the variation in house sale prices.
+
+The similar training and test R² scores suggest that the model generalises well to unseen data and does not show strong evidence of overfitting.
+
+The Actual vs Predicted visualisation shows that most estimates are positioned close to the diagonal reference line. However, the model tends to underestimate some of the most expensive properties.
+
+
+## Model Limitations
+
+Although the model achieved strong predictive performance, it has several limitations:
+
+- Linear Regression assumes linear relationships between the property features and sale price.
+- Some high-value properties are underestimated.
+- Outliers may influence the model’s coefficients and predictions.
+- The Streamlit prediction form collects six selected property characteristics, while the remaining model inputs are assigned typical values from the training dataset.
+- The model was trained using historical data from Ames, Iowa and may not generalise to other locations or future market conditions.
+- The prediction result should be treated as an estimate rather than a professional property valuation.
+
+
+## Recommendations for Future Development
+
+Future versions of the project could:
+
+- Compare Linear Regression with Random Forest, Gradient Boosting, and other regression algorithms.
+- Use cross-validation for a more robust evaluation.
+- Investigate transformations of the `SalePrice` variable.
+- Expand the dashboard form to include more property characteristics.
+- Compare model performance before and after feature engineering.
+- Retrain the model using more recent property-market data.
+
 
 ## Dashboard Design
 
@@ -232,6 +310,33 @@ The Streamlit dashboard contains five pages:
 ### House Price Prediction
 
 - Allows users to enter selected house characteristics and receive an estimated sale price from the trained model.
+
+## Testing
+
+
+### Notebook Testing
+
+✓ Notebook 1 executed successfully
+
+✓ Notebook 2 executed successfully
+
+
+### Dashboard Testing
+
+✓ Navigation works
+
+✓ Prediction page works
+
+✓ Model loads correctly
+
+### Validation
+
+✓ PEP8
+
+✓ Notebook execution
+
+✓ Deployment testing
+
 
 ## Unfixed Bugs
 
@@ -260,21 +365,48 @@ Future improvements include:
 
 ## Main Data Analysis and Machine Learning Libraries
 
-* Here you should list the libraries you used in the project and provide example(s) of how you used these libraries.
+Main Libraries Used: 
+
+### Pandas
+Used for loading, cleaning, manipulating and analysing the housing dataset.
+
+### NumPy
+Used for numerical operations during preprocessing and model evaluation.
+
+### Matplotlib
+Used to generate static visualisations such as scatter plots and histograms.
+
+### Seaborn
+Used to create correlation heatmaps and boxplots.
+
+### Scikit-learn
+Used for preprocessing, train-test splitting, model training and evaluation.
+
+### Joblib
+Used to save and load the trained Linear Regression model and feature list.
+
+### Streamlit
+Used to develop the interactive dashboard.
 
 ## Credits
 
+
 ### Dataset
 
-- Code Institute Heritage Housing dataset (hosted on Kaggle)
+- Code Institute Heritage Housing dataset
+- Ames Housing Dataset
+
+### Documentation
+
+- Pandas Documentation
+- Scikit-learn Documentation
+- Streamlit Documentation
+- Matplotlib Documentation
+- Seaborn Documentation
 
 ### Learning Resources
 
-- Code Institute Predictive Analytics walkthrough materials
-- Scikit-learn documentation
-- Pandas documentation
-- Matplotlib documentation
-- Seaborn documentation
+- Code Institute Predictive Analytics Walkthrough Project
 
 ### Acknowledgements
 
