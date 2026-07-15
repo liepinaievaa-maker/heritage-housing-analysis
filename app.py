@@ -6,7 +6,11 @@ import streamlit as st
 
 import pandas as pd
 
+import joblib
+
 df = pd.read_csv("./outputs/engineered_house_prices.csv")
+model = joblib.load("./outputs/models/linear_regression_model.pkl")
+model_features = joblib.load("./outputs/models/model_features.pkl")
 
 st.set_page_config(
     page_title="Heritage Housing Analysis",
@@ -218,27 +222,123 @@ elif page == "House Price Prediction":
     Enter the property characteristics below to estimate the predicted
     sale price of a house in Ames, Iowa.
 
-    **Note:** This page is currently a demonstration. The prediction model
-    will be connected after the trained model is exported.
+    Only the most influential features are entered by the user. Remaining
+    features are automatically assigned typical values from the training
+    dataset.
     """)
 
     col1, col2 = st.columns(2)
 
     with col1:
-        overall_quality = st.slider("Overall Quality", 1, 10, 5)
-        living_area = st.number_input("Living Area (sq ft)", 300, 6000, 1500)
-        garage_area = st.number_input("Garage Area (sq ft)", 0, 1500, 500)
+        overall_quality = st.slider(
+            "Overall Quality",
+            min_value=1,
+            max_value=10,
+            value=5
+        )
+
+        living_area = st.number_input(
+            "Living Area (sq ft)",
+            min_value=300,
+            max_value=6000,
+            value=1500
+        )
+
+        garage_area = st.number_input(
+            "Garage Area (sq ft)",
+            min_value=0,
+            max_value=1500,
+            value=500
+        )
 
     with col2:
-        year_built = st.number_input("Year Built", 1872, 2010, 2000)
-        lot_area = st.number_input("Lot Area (sq ft)", 1000, 250000, 9000)
+        year_built = st.number_input(
+            "Year Built",
+            min_value=1872,
+            max_value=2010,
+            value=2000
+        )
+
+        lot_area = st.number_input(
+            "Lot Area (sq ft)",
+            min_value=1000,
+            max_value=250000,
+            value=9000
+        )
+
         kitchen_quality = st.selectbox(
             "Kitchen Quality",
             ["Poor", "Fair", "Typical", "Good", "Excellent"]
         )
 
     if st.button("Predict Sale Price"):
-        st.warning(
-            "Prediction functionality will be enabled once the trained model "
-            "is connected to the dashboard."
+
+        # Encode the same dataset structure used to train the model.
+        model_data = pd.get_dummies(
+            df.drop(columns=["SalePrice"]),
+            drop_first=True
+        )
+
+        # Start with typical values for features not entered in the form.
+        input_data = model_data.median().to_frame().T
+
+        # Ensure the columns are in exactly the same order as during training.
+        input_data = input_data.reindex(
+            columns=model_features,
+            fill_value=0
+        )
+
+        # Replace typical values with the user's entries.
+        input_data.loc[0, "OverallQual"] = overall_quality
+        input_data.loc[0, "GrLivArea"] = living_area
+        input_data.loc[0, "GarageArea"] = garage_area
+        input_data.loc[0, "YearBuilt"] = year_built
+        input_data.loc[0, "LotArea"] = lot_area
+
+        # Update simple engineered features when they are available.
+        if "HasGarage" in input_data.columns:
+            input_data.loc[0, "HasGarage"] = int(garage_area > 0)
+
+        # Match the readable options to the dataset category codes.
+        kitchen_codes = {
+            "Poor": "Po",
+            "Fair": "Fa",
+            "Typical": "TA",
+            "Good": "Gd",
+            "Excellent": "Ex",
+        }
+
+        selected_code = kitchen_codes[kitchen_quality]
+
+        # Reset all encoded kitchen-quality columns.
+        kitchen_columns = [
+            column
+            for column in input_data.columns
+            if column.startswith("KitchenQual_")
+        ]
+
+        input_data.loc[0, kitchen_columns] = 0
+
+        # With drop_first=True, one category may not have its own column.
+        selected_column = f"KitchenQual_{selected_code}"
+
+        if selected_column in input_data.columns:
+            input_data.loc[0, selected_column] = 1
+
+        prediction = model.predict(input_data)[0]
+
+        st.success(f"Estimated Sale Price: ${prediction:,.0f}")
+
+        st.info("""
+        This estimate is generated using the trained Linear Regression model.
+        Only six property characteristics are entered by the user;
+                 all remaining
+        features are automatically filled with
+                typical values from the training dataset.
+        """)
+
+        st.caption(
+            "Predictions are estimates based on historical housing " \
+            "data and should "
+            "not be interpreted as professional property valuations."
         )
