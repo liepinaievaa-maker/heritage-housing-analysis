@@ -399,28 +399,27 @@ Future improvements include:
 Main Libraries Used: 
 
 ### Pandas
-Used for loading, cleaning, manipulating and analysing the housing dataset.
+- Pandas was used throughout the project for loading, cleaning, transforming, and analysing the housing dataset. It was also used to manipulate DataFrames, handle missing values, and prepare the data for modelling.
 
 ### NumPy
-Used for numerical operations during preprocessing and model evaluation.
+- NumPy was used for numerical computations, array operations, and supporting preprocessing tasks during feature engineering and model evaluation.
 
 ### Matplotlib
-Used to generate static visualisations such as scatter plots and histograms.
+- Matplotlib was used to create static visualisations, including scatter plots, histograms, and model evaluation charts displayed in both the notebooks and the Streamlit dashboard.
 
 ### Seaborn
-Used to create correlation heatmaps and boxplots.
+- Seaborn was used to create higher-level statistical visualisations, including the correlation heatmap and boxplots that supported the exploratory data analysis.
 
 ### Scikit-learn
-Used for preprocessing, train-test splitting, model training and evaluation.
+- Scikit-learn was used to split the dataset into training and testing sets, train the Linear Regression model, evaluate its performance using MAE, RMSE, and R² metrics, and export the trained model for deployment.
 
 ### Joblib
-Used to save and load the trained Linear Regression model and feature list.
+- Joblib was used to save and load the trained Linear Regression model together with the feature list required by the prediction dashboard.
 
 ### Streamlit
-Used to develop the interactive dashboard.
+- Streamlit was used to develop the interactive dashboard, allowing users to explore the dataset, review the model performance, and generate house price predictions.
 
 ## Credits
-
 
 ### Dataset
 
@@ -431,18 +430,39 @@ Used to develop the interactive dashboard.
 ### Documentation
 
 - Pandas Documentation
+- NumPy Documentation
 - Scikit-learn Documentation
 - Streamlit Documentation
 - Matplotlib Documentation
 - Seaborn Documentation
+- Joblib Documentation
 
 ### Learning Resources
 
 - Code Institute Predictive Analytics Walkthrough Project
+- [Code Institute Heritage Housing Walkthrough Repository](https://github.com/Code-Institute-Solutions/milestone-project-heritage-housing-issues)
+
+## Documentation and References
+
+The following official documentation resources were consulted during development:
+
+- [Pandas Documentation](https://pandas.pydata.org/docs/)
+
+- [NumPy Documentation](https://numpy.org/doc/)
+
+- [Matplotlib Documentation](https://matplotlib.org/stable/)
+
+- [Seaborn Documentation](https://seaborn.pydata.org/)
+
+- [Scikit-learn Documentation](https://scikit-learn.org/stable/)
+
+- [Streamlit Documentation](https://docs.streamlit.io/)
+
+- [Joblib Documentation](https://joblib.readthedocs.io/)
 
 ### Acknowledgements
 
-Thanks to the Code Institute Predictive Analytics course for providing the project brief and supporting learning materials.
+This project was developed as part of the Code Institute Predictive Analytics course. The Code Institute walkthrough project was used as a learning resource for understanding the predictive analytics workflow and overall project structure. The implementation, analysis, dashboard, and documentation in this repository were adapted and developed specifically for this project.
 
 ### Content
 
