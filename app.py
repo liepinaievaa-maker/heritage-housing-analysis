@@ -200,11 +200,12 @@ elif page == "Model Performance":
         "The Linear Regression model was evaluated on unseen test data."
     )
 
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
 
-    col1.metric("Mean Absolute Error", "21,242.82")
-    col2.metric("Root Mean Squared Error", "34,178.36")
-    col3.metric("R² Score", "0.8477")
+    col1.metric("Training R²", "0.8141")
+    col2.metric("Test R²", "0.8477")
+    col3.metric("Mean Absolute Error", "$21,242.82")
+    col4.metric("Root Mean Squared Error", "$34,178.36")
 
     st.subheader("Model Interpretation")
 
@@ -213,6 +214,11 @@ elif page == "Model Performance":
         "sale prices. The Mean Absolute Error indicates "
         "that predictions differ "
         "from actual sale prices by approximately 21,243 on average."
+    )
+
+    st.info(
+        "The similar training and test R² scores suggest that the model "
+        "generalises well and does not show strong evidence of overfitting."
     )
 
 elif page == "House Price Prediction":

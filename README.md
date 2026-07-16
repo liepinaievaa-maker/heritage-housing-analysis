@@ -286,13 +286,19 @@ The model achieved the following results:
 | Mean Absolute Error | $21,242.82 |
 | Root Mean Squared Error | $34,178.36 |
 
-The test R² score indicates that the model explains approximately 84.8% of the variation in house sale prices.
+The Linear Regression model achieved an R² score of approximately 0.85, indicating that it explains around 85% of the variation in house sale prices. Predictions are generally accurate for low- and medium-priced properties. However, the Actual vs Predicted plot shows larger prediction errors for higher-priced homes, suggesting that Linear Regression has limitations when modelling extreme property values.
 
 The similar training and test R² scores suggest that the model generalises well to unseen data and does not show strong evidence of overfitting.
 
 The Actual vs Predicted visualisation shows that most estimates are positioned close to the diagonal reference line. However, the model tends to underestimate some of the most expensive properties.
 
-![Model Performance](images/readme/model_performance.png)
+![Model Performance](images/readme/Model_Performance_.PNG)
+
+### Actual vs Predicted Sale Prices
+
+- The scatter plot compares the model's predicted sale prices with the actual values from the test dataset. Most observations lie close to the diagonal reference line, indicating that the Linear Regression model predicts house prices with good overall accuracy. Larger deviations occur mainly for the highest-priced properties, showing that the model is less accurate for extreme values.
+
+![Actual vs Predicted](images/readme/actual_vs_predicted.png)
 
 ## Model Limitations
 
