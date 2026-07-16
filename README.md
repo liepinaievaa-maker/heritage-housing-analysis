@@ -103,12 +103,33 @@ Deploying the trained model within a Streamlit dashboard.
 
 ## Exploratory Data Analysis
 
-The exploratory analysis identified several important insights.
+The exploratory analysis was conducted to better understand the housing dataset, identify important relationships between variables, and guide the feature engineering and modelling process.
 
-- OverallQual showed the strongest positive correlation with SalePrice.
-- GrLivArea was the second strongest predictor.
-- SalePrice follows a positively skewed distribution.
-- Several garage and basement variables required missing-value treatment before modelling.
+### Dataset Preview
+
+![Dataset Preview](images/readme/cleaned_dataset_preview.PNG)
+
+The cleaned dataset contains 1,460 observations and 29 engineered features used to train the prediction model.
+
+---
+
+### Sale Price Distribution
+
+The distribution of house sale prices is positively skewed, indicating that most houses are sold within a moderate price range while relatively few high-value properties create a long right tail.
+
+![Sale Price Distribution](images/readme/sale_price_distribution.PNG)
+
+---
+
+### Correlation Analysis
+
+A correlation heatmap was created to examine relationships between numerical variables. Strong positive correlations can be observed between SalePrice and variables such as OverallQual, GrLivArea, GarageArea and TotalBsmtSF.
+
+![Correlation Heatmap](images/readme/correlation_heatmap.png)
+
+The chart below highlights the ten variables with the strongest correlation to SalePrice.
+
+![Top Correlated Features](images/readme/top_features_correlation.png)
 
 
 ## Dataset Content
@@ -150,7 +171,16 @@ As a good friend, you are requested by your friend, who has received an inherita
 Although your friend has an excellent understanding of property prices in her own state and residential area, she fears that basing her estimates for property worth on her current knowledge might lead to inaccurate appraisals. What makes a house desirable and valuable where she comes from might not be the same in Ames, Iowa. She found a public dataset with house prices for Ames, Iowa, and will provide you with that.
 
 * 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that.
+
+![Living Area vs Sale Price](images/readme/living_area_vs_sale_price.png)
+
+![Year Built vs Sale Price](images/readme/year_built_vs_sale_price.png)
+
+![Overall Quality vs Sale Price](images/readme/overall_quality_vs_sale_price.png)
+
 * 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa.
+
+![Prediction Dashboard](images/readme/prediction_dashboard.png)
 
 The project addresses the following business requirements:
 
@@ -262,6 +292,7 @@ The similar training and test R² scores suggest that the model generalises well
 
 The Actual vs Predicted visualisation shows that most estimates are positioned close to the diagonal reference line. However, the model tends to underestimate some of the most expensive properties.
 
+![Model Performance](images/readme/model_performance.png)
 
 ## Model Limitations
 
@@ -396,6 +427,7 @@ Used to develop the interactive dashboard.
 - Code Institute Heritage Housing dataset
 - Ames Housing Dataset
 
+
 ### Documentation
 
 - Pandas Documentation
@@ -413,10 +445,6 @@ Used to develop the interactive dashboard.
 Thanks to the Code Institute Predictive Analytics course for providing the project brief and supporting learning materials.
 
 ### Content
-
-* The text for the Home page was taken from Wikipedia Article A
-* Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-* The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
 
 ### Media
 
