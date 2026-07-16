@@ -107,7 +107,7 @@ The exploratory analysis was conducted to better understand the housing dataset,
 
 ### Dataset Preview
 
-![Dataset Preview](images/readme/cleaned_dataset_preview.PNG)
+![Dataset Preview](images/readme/cleaned_dataset_preview.png)
 
 The cleaned dataset contains 1,460 observations and 29 engineered features used to train the prediction model.
 
@@ -117,7 +117,7 @@ The cleaned dataset contains 1,460 observations and 29 engineered features used 
 
 The distribution of house sale prices is positively skewed, indicating that most houses are sold within a moderate price range while relatively few high-value properties create a long right tail.
 
-![Sale Price Distribution](images/readme/sale_price_distribution.PNG)
+![Sale Price Distribution](images/readme/sale_price_distribution.png)
 
 ---
 
