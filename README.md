@@ -1,4 +1,4 @@
-//** # ![CI logo]() **//
+//** Moc **//
 
 # Heritage Housing Analysis
 
@@ -344,29 +344,56 @@ The Streamlit dashboard contains five pages:
 
 ## Testing
 
+Testing was carried out throughout the project to confirm that the notebooks, dashboard, prediction functionality, and deployment files behaved as expected.
 
 ### Notebook Testing
 
-✓ Notebook 1 executed successfully
-
-✓ Notebook 2 executed successfully
-
+| Test | Expected Result | Outcome |
+|---|---|---|
+| Notebook 1: Business Understanding | Opens correctly and contains the business requirements and hypotheses | Pass |
+| Notebook 2: Data Collection and Exploration | Dataset loads and exploratory analysis runs without errors | Pass |
+| Notebook 3: Data Cleaning | Missing values are handled and the cleaned dataset is saved | Pass |
+| Notebook 4: Feature Engineering | Engineered features are created and the dataset is saved successfully | Pass |
+| Notebook 5: Modelling and Evaluation | Model trains, evaluates, produces predictions, and exports successfully | Pass |
 
 ### Dashboard Testing
 
-✓ Navigation works
+| Feature | Expected Result | Outcome |
+|---|---|---|
+| Sidebar navigation | Each dashboard page opens correctly | Pass |
+| Project Overview page | Project summary displays correctly | Pass |
+| Business Understanding page | Business problem, hypotheses, and validation results display correctly | Pass |
+| Data Exploration page | Dataset preview and all visualisations display correctly | Pass |
+| Model Performance page | MAE, RMSE, and R² metrics display correctly | Pass |
+| Prediction page | User inputs are accepted and an estimated sale price is returned | Pass |
+| Prediction result | Changing input values changes the predicted sale price | Pass |
+| Model loading | Saved model and feature list load without errors | Pass |
 
-✓ Prediction page works
+### Input Testing
 
-✓ Model loads correctly
+| Test | Expected Result | Outcome |
+|---|---|---|
+| Minimum allowed values | Prediction is returned without an error | Pass |
+| Typical property values | Prediction is returned and appears reasonable | Pass |
+| Maximum allowed values | Prediction is returned without an error | Pass |
+| Kitchen quality options | Each dropdown option can be selected | Pass |
+| Garage area set to zero | Prediction runs and `HasGarage` is treated as false | Pass |
 
-### Validation
+### Code and Environment Testing
 
-✓ PEP8
+| Test | Expected Result | Outcome |
+|---|---|---|
+| `requirements.txt` installation | All required packages install successfully | Pass |
+| Streamlit local launch | App starts with `streamlit run app.py` |  Pass |
+| Model files | `.pkl` files exist and are readable | Pass |
+| Git repository | No virtual environment or temporary files are committed | Pass |
+| Notebook execution | Notebooks run from top to bottom after restarting the kernel | Pass |
 
-✓ Notebook execution
+### Known Testing Limitations
 
-✓ Deployment testing
+- Heroku deployment testing will be completed after the application is deployed.
+- Predictions are estimates based on historical Ames housing data.
+- The dashboard uses six user-entered features while the remaining model inputs are assigned typical values from the training dataset.
 
 
 ## Unfixed Bugs
