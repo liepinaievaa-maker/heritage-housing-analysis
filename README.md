@@ -59,7 +59,7 @@ Newer houses generally sell for higher prices.
 
 ### Hypothesis 4
 
-Feature engineering improves prediction performance.
+The selected features provide sufficient information to build a reliable house price prediction model.
 
 **Outcome:** Supported.
 
@@ -322,6 +322,27 @@ Future versions of the project could:
 - Expand the dashboard form to include more property characteristics.
 - Compare model performance before and after feature engineering.
 - Retrain the model using more recent property-market data.
+
+
+## Conclusions
+
+- This project successfully developed a machine learning solution for predicting house sale prices in Ames, Iowa.
+
+- The exploratory data analysis confirmed that **Overall Quality, Ground Living Area, Garage Area, Basement Area, and Year Built** are among the strongest predictors of sale price.
+
+- The Linear Regression model achieved an **R² score of 0.8477**, exceeding the project success criterion (**R² > 0.75**) and providing reliable predictions for most residential properties. The evaluation also showed that prediction accuracy decreases for some higher-value houses, highlighting one limitation of the model.
+
+- Overall, both business requirements were successfully addressed through data exploration, feature engineering, model development, and deployment within a Streamlit dashboard.
+
+### Hypothesis Validation
+
+| Hypothesis | Result |
+|------------|--------|
+| Houses with higher Overall Quality ratings achieve higher sale prices. | Supported |
+| Larger living areas increase house sale prices. | Supported |
+| Newer houses generally sell for higher prices. | Partially supported |
+| Feature engineering improves prediction performance. | Supported |
+| Garage size contributes positively to house value. | Supported |
 
 
 ## Dashboard Design
