@@ -426,17 +426,6 @@ Main Libraries Used:
 - Code Institute Heritage Housing dataset
 - Ames Housing Dataset
 
-
-### Documentation
-
-- Pandas Documentation
-- NumPy Documentation
-- Scikit-learn Documentation
-- Streamlit Documentation
-- Matplotlib Documentation
-- Seaborn Documentation
-- Joblib Documentation
-
 ### Learning Resources
 
 - Code Institute Predictive Analytics Walkthrough Project
@@ -463,16 +452,4 @@ The following official documentation resources were consulted during development
 ### Acknowledgements
 
 This project was developed as part of the Code Institute Predictive Analytics course. The Code Institute walkthrough project was used as a learning resource for understanding the predictive analytics workflow and overall project structure. The implementation, analysis, dashboard, and documentation in this repository were adapted and developed specifically for this project.
-
-### Content
-
-### Media
-
-* The photos used on the home and sign-up page are from This Open Source site
-* The images used for the gallery page were taken from this other open-source site
-
-## Acknowledgements (optional)
-
-
-* In case you would like to thank the people that provided support through this project.
 
