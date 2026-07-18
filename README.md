@@ -4,6 +4,33 @@
 
 - A machine learning project that analyzes residential property data and predicts house sale prices using Linear Regression. The project follows a complete data science workflow, including business understanding, data exploration, data cleaning, feature engineering, model training, and evaluation.
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Business Problem](#business-problem)
+- [Project Objectives](#project-objectives)
+- [Project Hypotheses](#project-hypotheses)
+- [Project Workflow (CRISP-DM)](#project-workflow-crisp-dm)
+- [Exploratory Data Analysis](#exploratory-data-analysis)
+- [Dataset Content](#dataset-content)
+- [Business Requirements](#business-requirements)
+- [Mapping Business Requirements to the Solution](#mapping-business-requirements-to-the-solution)
+- [ML Business Case](#ml-business-case)
+- [House Price Prediction](#house-price-prediction)
+- [Model Evaluation](#model-evaluation)
+- [Model Limitations](#model-limitations)
+- [Recommendations for Future Development](#recommendations-for-future-development)
+- [Conclusions](#conclusions)
+- [Dashboard Design](#dashboard-design)
+- [Testing](#testing)
+- [Unfixed Bugs](#unfixed-bugs)
+- [Deployment](#deployment)
+- [Main Data Analysis and Machine Learning Libraries](#main-data-analysis-and-machine-learning-libraries)
+- [Credits](#credits)
+- [Documentation and References](#documentation-and-references)
+- [Acknowledgements](#acknowledgements)
+
+
 ## Project Overview
 
 - This project investigates the factors that influence residential property prices in Ames, Iowa. Using historical housing data, the project explores the relationships between house attributes and sale prices before developing a machine learning model capable of predicting the sale price of a property.
@@ -403,7 +430,7 @@ Future versions of the project could:
 | Houses with higher Overall Quality ratings achieve higher sale prices. | Supported |
 | Larger living areas increase house sale prices. | Supported |
 | Newer houses generally sell for higher prices. | Partially supported |
-| Feature engineering improves prediction performance. | Supported |
+| The selected features provide sufficient information to build a reliable house price prediction model.  | Supported |
 | Garage size contributes positively to house value. | Supported |
 
 
