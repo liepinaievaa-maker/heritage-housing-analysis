@@ -4,6 +4,8 @@
 
 - A machine learning project that analyzes residential property data and predicts house sale prices using Linear Regression. The project follows a complete data science workflow, including business understanding, data exploration, data cleaning, feature engineering, model training, and evaluation.
 
+---
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
@@ -30,6 +32,7 @@
 - [Documentation and References](#documentation-and-references)
 - [Acknowledgements](#acknowledgements)
 
+---
 
 ## Project Overview
 
@@ -37,11 +40,15 @@
 
 - This project was developed in response to a business scenario in which a client inherited four residential properties in Ames, Iowa. The objective is to understand which property characteristics influence sale price and to build a machine learning model capable of estimating property values.
 
+---
+
 ##  Business Problem
 
 - Buying and selling houses involves many factors that influence property value. Real estate companies and homeowners benefit from understanding which features have the greatest impact on sale prices.
 
 -  The objective of this project is to build a machine learning model capable of predicting house sale prices based on property characteristics while identifying the most influential features affecting price.
+
+---
 
 ##  Project Objectives
 
@@ -53,6 +60,8 @@ The objectives of this project were to:
 - Train and evaluate a Linear Regression model.
 - Export the trained model for deployment.
 - Build an interactive Streamlit dashboard for house price prediction.
+
+---
 
 ##  Project Hypotheses
 
@@ -127,6 +136,7 @@ Assessing model performance using MAE, RMSE, R² score, and prediction visualisa
 
 Deploying the trained model within a Streamlit dashboard.
 
+![Project Workflow](images/readme/Work_Flow.png)
 
 ## Exploratory Data Analysis
 
@@ -157,6 +167,8 @@ A correlation heatmap was created to examine relationships between numerical var
 The chart below highlights the ten variables with the strongest correlation to SalePrice.
 
 ![Top Correlated Features](images/readme/top_features_correlation.png)
+
+---
 
 ## Dataset Content
 
@@ -252,7 +264,6 @@ By focusing on these variables, the model is able to provide accurate and reliab
 
 ---
 
-
 ## Business Requirements
 
 As a good friend, you are requested by your friend, who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, to  help in maximising the sales price for the inherited properties.
@@ -278,6 +289,7 @@ The project addresses the following business requirements:
 - Develop a machine learning model capable of predicting house sale prices from property characteristics.
 - Create an interactive dashboard that allows users to explore the dataset, review the model performance, and generate estimated sale prices for individual properties.
 
+---
 
 ## Mapping Business Requirements to the Solution
 
@@ -301,6 +313,8 @@ Predict the sale price of inherited houses and other properties.
 - Cleaned and prepared the dataset.
 - Engineered additional predictive features.
 - Trained and evaluated a Linear Regression model.
+
+---
 
 ## ML Business Case
 
@@ -333,6 +347,7 @@ The project was considered successful if the predictive model achieved an R² sc
 
 The final Linear Regression model achieved an **R² score of 0.8477**, exceeding the agreed business requirement and demonstrating that the selected features provide a reliable basis for predicting residential property prices.
 
+---
 
 ## House Price Prediction
 
@@ -355,6 +370,7 @@ Predictions are intended as data-driven estimates rather than professional
 property valuations. The model achieved an R² score of 0.8477 and a Mean
 Absolute Error of approximately $21,243 on unseen test data.
 
+---
 
 ## Model Evaluation
 
@@ -389,6 +405,8 @@ The Actual vs Predicted visualisation shows that most estimates are positioned c
 
 ![Actual vs Predicted](images/readme/actual_vs_predicted.png)
 
+---
+
 ## Model Limitations
 
 Although the model achieved strong predictive performance, it has several limitations:
@@ -400,6 +418,7 @@ Although the model achieved strong predictive performance, it has several limita
 - The model was trained using historical data from Ames, Iowa and may not generalise to other locations or future market conditions.
 - The prediction result should be treated as an estimate rather than a professional property valuation.
 
+---
 
 ## Recommendations for Future Development
 
@@ -412,6 +431,7 @@ Future versions of the project could:
 - Compare model performance before and after feature engineering.
 - Retrain the model using more recent property-market data.
 
+---
 
 ## Conclusions
 
@@ -433,7 +453,7 @@ Future versions of the project could:
 | The selected features provide sufficient information to build a reliable house price prediction model.  | Supported |
 | Garage size contributes positively to house value. | Supported |
 
-
+---
 
 ## Dashboard Design
 
@@ -458,6 +478,8 @@ The Streamlit dashboard contains five pages:
 ### House Price Prediction
 
 - Allows users to enter selected house characteristics and receive an estimated sale price from the trained model.
+
+---
 
 ## Testing
 
@@ -486,6 +508,8 @@ Testing was carried out throughout the project to confirm that the notebooks, da
 | Prediction result | Changing input values changes the predicted sale price | Pass |
 | Model loading | Saved model and feature list load without errors | Pass |
 
+---
+
 ### Input Testing
 
 | Test | Expected Result | Outcome |
@@ -512,6 +536,7 @@ Testing was carried out throughout the project to confirm that the notebooks, da
 - Predictions are estimates based on historical Ames housing data.
 - The dashboard uses six user-entered features while the remaining model inputs are assigned typical values from the training dataset.
 
+---
 
 ## Unfixed Bugs
 
@@ -522,6 +547,8 @@ Future improvements include:
 - Comparing additional machine learning models.
 - Expanding the Streamlit dashboard with more interactive visualisations.
 - Improving feature engineering with additional domain-specific variables.
+
+---
 
 ## Deployment
 
@@ -537,6 +564,8 @@ Future improvements include:
 4. Select the branch you want to deploy, then click Deploy Branch.
 5. The deployment process should happen smoothly if all deployment files are fully functional. Click the button Open App on the top of the page to access your App.
 6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+
+---
 
 ## Main Data Analysis and Machine Learning Libraries
 
@@ -562,6 +591,8 @@ Main Libraries Used:
 
 ### Streamlit
 - Streamlit was used to develop the interactive dashboard, allowing users to explore the dataset, review the model performance, and generate house price predictions.
+
+---
 
 ## Credits
 
@@ -597,3 +628,8 @@ The following official documentation resources were consulted during development
 
 This project was developed as part of the Code Institute Predictive Analytics course. The Code Institute walkthrough project was used as a learning resource for understanding the predictive analytics workflow and overall project structure. The implementation, analysis, dashboard, and documentation in this repository were adapted and developed specifically for this project.
 
+---
+
+## Final Remarks
+
+- This project demonstrates the end-to-end development of a machine learning solution, from understanding the business problem through data preparation, model development, evaluation, deployment, and interactive prediction. The resulting dashboard provides an accessible way to estimate residential property sale prices based on key property characteristics.
