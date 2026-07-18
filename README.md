@@ -131,37 +131,99 @@ The chart below highlights the ten variables with the strongest correlation to S
 
 ![Top Correlated Features](images/readme/top_features_correlation.png)
 
-
 ## Dataset Content
 
+### Dataset Source
 
-- This project uses the Ames Housing Dataset, publicly available on from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data).
+The dataset used in this project is the **Ames Housing Dataset**, sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data). It contains historical residential property sales from **Ames, Iowa (USA)** between **1872 and 2010**.
 
-- The dataset contains 1,460 residential properties from Ames, Iowa, with 29 selected features after data cleaning and feature engineering
+This dataset was selected because it contains a wide range of house characteristics, making it suitable for developing a supervised machine learning model capable of predicting residential property sale prices.
 
-- The target variable is `SalePrice`.
+---
 
-Key variables include:
+### Dataset Summary
 
-- OverallQual
-- GrLivArea
-- TotalBsmtSF
-- GarageArea
-- YearBuilt
-- LotArea
- 
- | Variable | Description |
-|----------|-------------|
-| SalePrice | Target variable representing the final sale price of the property. |
-| OverallQual | Overall material and finish quality of the house. |
-| GrLivArea | Above-ground living area in square feet. |
-| TotalBsmtSF | Total basement area in square feet. |
-| GarageArea | Garage size in square feet. |
-| YearBuilt | Original construction year of the property. |
-| LotArea | Lot size in square feet. |
-| KitchenQual | Kitchen quality rating. |
-| BedroomAbvGr | Number of bedrooms above ground. |
-| YearRemodAdd | Year of the most recent renovation or remodel. |
+| Property | Description |
+|-----------|-------------|
+| Dataset | Ames Housing Dataset |
+| Source | Kaggle |
+| Problem Type | Supervised Machine Learning (Regression) |
+| Target Variable | **SalePrice** |
+| Number of Records | 1,460 Houses |
+| Original Features | 80 Variables |
+| Objective | Predict the sale price of residential properties |
+
+---
+
+### Project Objective
+
+The objective of this project is to build a machine learning model capable of estimating the market value of residential properties based on their physical characteristics and overall quality.
+
+The model analyses historical house sales to identify patterns between property features and selling prices, providing accurate price predictions for unseen properties.
+
+---
+
+### Feature Categories
+
+To improve readability, the dataset variables can be grouped into the following categories:
+
+| Category | Example Features |
+|-----------|------------------|
+| Property Size | GrLivArea, LotArea, TotalBsmtSF |
+| House Quality | OverallQual, OverallCond |
+| Construction | YearBuilt, YearRemodAdd |
+| Garage | GarageArea, GarageCars |
+| Basement | BsmtFinSF1, BsmtExposure |
+| Rooms | BedroomAbvGr, FullBath, KitchenAbvGr |
+| Exterior Features | WoodDeckSF, OpenPorchSF |
+| Location | Neighborhood, MSZoning |
+
+---
+
+### Features Used for Prediction
+
+Although the original dataset contains 80 variables, only the most relevant features were selected during the machine learning process to improve prediction accuracy.
+
+Some of the most influential features include:
+
+|Feature|Description|
+|-------|-----------|
+|OverallQual|Overall material and finish quality|
+|GrLivArea|Above-ground living area (sq ft)|
+|GarageCars|Number of garage spaces|
+|GarageArea|Garage size (sq ft)|
+|TotalBsmtSF|Total basement area (sq ft)|
+|YearBuilt|Year the property was built|
+|YearRemodAdd|Year of last renovation|
+|FullBath|Number of full bathrooms|
+|TotRmsAbvGrd|Total rooms above ground|
+|1stFlrSF|First floor living area (sq ft)|
+
+ **Note:** The final set of features used by the model was selected after data exploration, feature engineering and model evaluation.
+
+---
+
+### Data Preparation
+
+Before training the machine learning model, the dataset underwent several preprocessing steps:
+
+- Checked for duplicate records.
+- Handled missing values.
+- Converted categorical variables where required.
+- Selected the most informative features.
+- Performed feature engineering where appropriate.
+- Split the dataset into training and testing datasets.
+- Applied preprocessing within the machine learning pipeline to ensure consistent predictions.
+
+---
+
+### Why These Features?
+
+Exploratory Data Analysis (EDA) showed that variables describing **property size**, **overall quality**, **garage capacity**, **basement area**, and **construction year** have the strongest relationship with house sale prices.
+
+By focusing on these variables, the model is able to provide accurate and reliable predictions while reducing unnecessary complexity.
+
+---
 
 
 ## Business Requirements
@@ -343,6 +405,7 @@ Future versions of the project could:
 | Newer houses generally sell for higher prices. | Partially supported |
 | Feature engineering improves prediction performance. | Supported |
 | Garage size contributes positively to house value. | Supported |
+
 
 
 ## Dashboard Design
