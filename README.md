@@ -168,6 +168,17 @@ The chart below highlights the ten variables with the strongest correlation to S
 
 ![Top Correlated Features](images/readme/top_features_correlation.png)
 
+### Visualisations Used
+
+- The exploratory data analysis used several types of visualisations to understand the dataset and investigate relationships between property features and sale price.
+
+| Visualisation | Purpose |
+|---------------|---------|
+| Histogram | Examined the distribution of house sale prices and identified right-skewness. |
+| Correlation Heatmap | Identified relationships between numerical variables and SalePrice. |
+| Scatter Plots | Explored relationships between key numerical features (e.g. GrLivArea, YearBuilt, OverallQual) and sale price. |
+| Correlation Ranking Plot | Highlighted the variables with the strongest correlation to SalePrice. |
+| Actual vs Predicted Scatter Plot | Compared predicted house prices with actual sale prices to evaluate model performance. |
 ---
 
 ## Dataset Content
@@ -623,6 +634,10 @@ The following official documentation resources were consulted during development
 - [Streamlit Documentation](https://docs.streamlit.io/)
 
 - [Joblib Documentation](https://joblib.readthedocs.io/)
+
+### Design Resources
+
+- Workflow diagram created using [Canva](https://www.canva.com/)
 
 ### Acknowledgements
 
