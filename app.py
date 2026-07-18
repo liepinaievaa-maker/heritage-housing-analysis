@@ -54,7 +54,7 @@ elif page == "Business Understanding":
 
     st.subheader("Project Hypotheses")
     st.markdown("""
-    - Houses with higher overall quality are expected to have 
+    - Houses with higher overall quality are expected to have
                 higher sale prices.
     - Larger living areas are expected to increase house prices.
     - Newer houses are expected to sell for higher prices.
@@ -73,13 +73,13 @@ elif page == "Business Understanding":
     - **Larger Living Area:** Supported. GrLivArea was one of the strongest
                 features correlated with SalePrice.
 
-    - **Newer Houses:** Partially supported. Newer homes tended 
+    - **Newer Houses:** Partially supported. Newer homes tended
                 to sell for more, although other factors also influenced price.
 
     - **Garage Presence:** Supported. Houses with
                  garages generally sold for higher prices.
 
-    - **Feature Engineering:** Supported. The engineered features 
+    - **Feature Engineering:** Supported. The engineered features
                 contributed to a model with an R² score of **0.8477**.
     """)
 
@@ -97,7 +97,7 @@ elif page == "Data Exploration":
 
     st.subheader("Distribution of House Sale Prices")
 
-    fig, ax = plt.subplots(figsize=(8,4))
+    fig, ax = plt.subplots(figsize=(8, 4))
 
     ax.hist(df["SalePrice"], bins=30)
 
@@ -154,8 +154,8 @@ elif page == "Data Exploration":
     st.pyplot(fig)
 
     st.info(
-        "Higher Overall Quality ratings are associated" \
-        " with higher house sale" \
+        "Higher Overall Quality ratings are associated"
+        " with higher house sale"
         "prices, supporting one of the project's initial hypotheses."
     )
 
@@ -172,8 +172,8 @@ elif page == "Data Exploration":
     st.pyplot(fig)
 
     st.info(
-      "Homes with larger living areas generally sell for higher prices, " \
-      "supporting the second hypothesis."
+        "Homes with larger living areas generally sell for higher prices, "
+        "supporting the second hypothesis."
     )
 
     st.subheader("Sale Price vs Year Built")
@@ -189,7 +189,7 @@ elif page == "Data Exploration":
     st.pyplot(fig)
 
     st.info(
-        "Newer houses generally achieve higher sale prices, " \
+        "Newer houses generally achieve higher sale prices, "
         "although other factors also influence value."
     )
 
@@ -344,7 +344,7 @@ elif page == "House Price Prediction":
         """)
 
         st.caption(
-            "Predictions are estimates based on historical housing " \
-            "data and should "
-            "not be interpreted as professional property valuations."
+            "Predictions are estimates based on historical housing data "
+            "and should not be interpreted as "
+            "professional property valuations."
         )
