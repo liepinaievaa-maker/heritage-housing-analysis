@@ -9,7 +9,7 @@ import pandas as pd
 import joblib
 
 df = pd.read_csv("./outputs/engineered_house_prices.csv")
-model = joblib.load("./outputs/models/linear_regression_model.pkl")
+model = joblib.load("./outputs/models/best_regression_model.pkl")
 model_features = joblib.load("./outputs/models/model_features.pkl")
 
 st.set_page_config(
