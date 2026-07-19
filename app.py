@@ -11,6 +11,7 @@ import joblib
 df = pd.read_csv("./outputs/engineered_house_prices.csv")
 model = joblib.load("./outputs/models/best_regression_model.pkl")
 model_features = joblib.load("./outputs/models/model_features.pkl")
+model_name = joblib.load("./outputs/models/model_name.pkl")
 
 st.set_page_config(
     page_title="Heritage Housing Analysis",
@@ -34,54 +35,130 @@ page = st.sidebar.radio(
 if page == "Project Overview":
     st.title("Heritage Housing Analysis")
 
-    st.write("""
-    Welcome to the Heritage Housing Analysis dashboard.
+    st.write(
+        """
+        This dashboard presents the results of a predictive analytics project
+        based on residential property data from Ames, Iowa.
 
-    This project explores residential property data from Ames, Iowa,
-    identifies the factors that influence house prices,
-    and develops a machine learning model to predict sale prices.
-    """)
+        The project investigates the property characteristics associated with
+        house sale prices and uses a Gradient Boosting regression model to
+        estimate property values.
+        """
+    )
+
+    st.subheader("Project Objectives")
+
+    st.markdown(
+        """
+        - Explore the relationships between property characteristics and
+          sale price.
+        - Test the main project hypotheses using data visualisations.
+        - Compare several regression models.
+        - Select the strongest-performing model for deployment.
+        - Provide an interactive tool for estimating house sale prices.
+        """
+    )
+
+    st.subheader("Dashboard Pages")
+
+    st.markdown(
+        """
+        - **Project Overview:** Introduces the project, objectives and
+          dashboard structure.
+        - **Business Understanding:** Explains the client problem, business
+          requirements and project hypotheses.
+        - **Data Exploration:** Presents the main patterns and relationships
+          identified in the housing data.
+        - **Model Performance:** Shows the selected model and its evaluation
+          results.
+        - **House Price Prediction:** Allows users to enter property details
+          and generate an estimated sale price.
+        """
+    )
+
+    st.info(
+        "Use the navigation menu in the sidebar to move between the "
+        "dashboard pages."
+    )
 
 elif page == "Business Understanding":
     st.title("Business Understanding")
 
-    st.subheader("Business Problem")
+    st.subheader("Client Requirement")
 
-    st.write("""
-    The client inherited four houses in Ames, Iowa and would like to estimate
-    their market value using historical housing data.
-    """)
+    st.write(
+        """
+        The client has inherited four residential properties in Ames, Iowa,
+        and wants to estimate their likely sale values.
+
+        Historical housing data is used to identify the property
+        characteristics most strongly associated with sale price and to
+        develop a predictive model that can support valuation decisions.
+        """
+    )
+
+    st.subheader("Business Requirements")
+
+    st.markdown(
+        """
+        1. Identify the property characteristics that are most strongly
+           related to house sale prices.
+
+        2. Develop a machine learning model capable of producing reliable
+           sale-price estimates.
+
+        3. Provide an interactive dashboard where users can explore the
+           findings and generate property-price predictions.
+        """
+    )
 
     st.subheader("Project Hypotheses")
-    st.markdown("""
-    - Houses with higher overall quality are expected to have
-                higher sale prices.
-    - Larger living areas are expected to increase house prices.
-    - Newer houses are expected to sell for higher prices.
-    - Houses with garages are expected to have higher sale prices.
-    - Feature engineering is expected to improve model performance.
-    """)
+
+    st.markdown(
+        """
+        - Houses with higher overall quality are expected to have higher
+          sale prices.
+
+        - Houses with larger living areas are expected to have higher
+          sale prices.
+
+        - Newer houses are expected to achieve higher sale prices.
+
+        - Properties with larger garages are expected to achieve higher
+          sale prices.
+
+        - The selected property features are expected to provide sufficient
+          information to build a reliable house-price prediction model.
+        """
+    )
 
     st.subheader("Hypothesis Validation")
 
-    st.markdown("""
-    ### Validation Results
+    st.markdown(
+        """
+        - **Overall Quality:** Supported. Properties with higher quality
+          ratings generally achieved higher sale prices.
 
-    - **Higher Overall Quality:** Supported. Houses with higher quality
-                ratings generally achieved higher sale prices.
+        - **Living Area:** Supported. Larger ground-floor living areas were
+          positively associated with sale price.
 
-    - **Larger Living Area:** Supported. GrLivArea was one of the strongest
-                features correlated with SalePrice.
+        - **Year Built:** Partially supported. Newer properties generally
+          achieved higher prices, although sale price was also influenced by
+          quality, size and other characteristics.
 
-    - **Newer Houses:** Partially supported. Newer homes tended
-                to sell for more, although other factors also influenced price.
+        - **Garage Area:** Supported. Properties with larger garages generally
+          achieved higher sale prices.
 
-    - **Garage Presence:** Supported. Houses with
-                 garages generally sold for higher prices.
+        - **Predictive Feature Set:** Supported. The selected original and
+          engineered property features produced strong test and
+          cross-validation performance.
+        """
+    )
 
-    - **Feature Engineering:** Supported. The engineered features
-                contributed to a model with an R² score of **0.8477**.
-    """)
+    st.info(
+        f"The final deployed model is {model_name}, selected after comparing "
+        "multiple regression algorithms."
+    )
 
 elif page == "Data Exploration":
     st.title("Data Exploration")
@@ -197,28 +274,31 @@ elif page == "Model Performance":
     st.title("Model Performance")
 
     st.write(
-        "The Linear Regression model was evaluated on unseen test data."
+        f"The selected model, **{model_name}**, was evaluated on unseen test data."
     )
 
     col1, col2, col3, col4 = st.columns(4)
 
-    col1.metric("Training R²", "0.8141")
-    col2.metric("Test R²", "0.8477")
-    col3.metric("Mean Absolute Error", "$21,242.82")
-    col4.metric("Root Mean Squared Error", "$34,178.36")
+    col1.metric("Training R²", "0.9633")
+    col2.metric("Test R²", "0.8892")
+    col3.metric("Mean Absolute Error", "$17,953.97")
+    col4.metric("Root Mean Squared Error", "$29,149.13")
 
     st.subheader("Model Interpretation")
 
     st.write(
-        "The model explains approximately 84.8% of the variation in house "
-        "sale prices. The Mean Absolute Error indicates "
-        "that predictions differ "
-        "from actual sale prices by approximately 21,243 on average."
+        "The selected Gradient Boosting model explains approximately 88.9% "
+        "of the variation in sale prices on unseen test data."
+        "Its Mean Absolute "
+        "Error indicates that predictions differ from actual sale prices by "
+        "approximately $17,954 on average."
     )
 
     st.info(
-        "The similar training and test R² scores suggest that the model "
-        "generalises well and does not show strong evidence of overfitting."
+        "The model performs strongly on unseen test data. The higher training "
+        "score indicates some difference between training and test performance, "
+        "but the cross-validation R² score of 0.8607 suggests that the model "
+        "generalises reliably across different data subsets."
     )
 
 elif page == "House Price Prediction":
@@ -335,13 +415,15 @@ elif page == "House Price Prediction":
 
         st.success(f"Estimated Sale Price: ${prediction:,.0f}")
 
-        st.info("""
-        This estimate is generated using the trained Linear Regression model.
-        Only six property characteristics are entered by the user;
-                 all remaining
-        features are automatically filled with
-                typical values from the training dataset.
-        """)
+        st.info(
+            f"""
+            This estimate is generated using the trained {model_name} model.
+
+            Only six property characteristics are entered by the user.
+            All remaining features are automatically filled with typical
+            values from the training dataset.
+            """
+        )
 
         st.caption(
             "Predictions are estimates based on historical housing data "
