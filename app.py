@@ -177,15 +177,42 @@ elif page == "Data Exploration":
     st.title("Data Exploration")
 
     st.write(
-        "The dataset below contains the cleaned and engineered housing data "
-        "used to train the machine learning model."
+        """
+        This page presents the key findings from the exploratory data analysis
+        carried out before developing the machine learning model.
+
+        The visualisations below highlight important relationships between
+        property characteristics and house sale prices, helping to evaluate the
+        project hypotheses and identify the features
+        most useful for prediction.
+        """
     )
 
-    st.dataframe(df.head(10))
+    st.subheader("Processed Dataset")
 
-    st.write(f"Dataset shape: {df.shape[0]} rows × {df.shape[1]} columns")
+    st.write(
+        """
+        The table below shows a preview of the cleaned and engineered dataset
+        used for model development.
+        """
+    )
+
+    st.dataframe(df.head(10), use_container_width=True)
+
+    col1, col2 = st.columns(2)
+
+    col1.metric("Properties", f"{df.shape[0]:,}")
+    col2.metric("Variables", df.shape[1])
 
     st.subheader("Distribution of House Sale Prices")
+
+    st.write(
+        """
+        This histogram shows how house sale prices are distributed across the
+        dataset. It helps identify the most common price ranges and whether the
+        dataset contains unusually expensive properties.
+        """
+    )
 
     fig, ax = plt.subplots(figsize=(8, 4))
 
@@ -197,6 +224,16 @@ elif page == "Data Exploration":
 
     st.pyplot(fig)
     plt.close(fig)
+
+    st.info(
+        """
+        Most properties are concentrated in the lower and middle price ranges,
+        while a smaller number of properties have much higher sale prices.
+
+        This indicates a right-skewed distribution, where a small number of
+        high-value properties extend the distribution towards larger prices.
+        """
+    )
 
     st.subheader("Correlation Heatmap")
 
