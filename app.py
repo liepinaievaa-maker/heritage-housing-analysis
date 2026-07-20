@@ -81,6 +81,19 @@ if page == "Project Overview":
         "dashboard pages."
     )
 
+    st.subheader("Project Dataset")
+
+    st.write(
+        """
+        The project uses the Ames Housing dataset, containing historical
+        residential property information from Ames, Iowa.
+
+        Following data cleaning and feature engineering, the processed dataset
+        contains 1,460 observations and 24 variables used for model
+        development.
+        """
+    )
+
 elif page == "Business Understanding":
     st.title("Business Understanding")
 
@@ -183,20 +196,45 @@ elif page == "Data Exploration":
     ax.set_title("Distribution of Sale Prices")
 
     st.pyplot(fig)
+    plt.close(fig)
 
     st.subheader("Correlation Heatmap")
 
     numeric_df = df.select_dtypes(include=["number"])
 
-    fig, ax = plt.subplots(figsize=(12, 8))
+    top_features = (
+        numeric_df.corr()["SalePrice"]
+        .abs()
+        .sort_values(ascending=False)
+        .head(12)
+        .index
+    )
+
+    correlation_matrix = numeric_df[top_features].corr()
+
+    fig, ax = plt.subplots(figsize=(11, 8))
 
     sns.heatmap(
-        numeric_df.corr(),
+        correlation_matrix,
+        annot=True,
+        fmt=".2f",
         cmap="coolwarm",
+        center=0,
         ax=ax
     )
 
+    ax.set_title("Correlation Between Sale Price and Key Numerical Features")
+
     st.pyplot(fig)
+    plt.close(fig)
+
+    st.info(
+        "The heatmap shows the strength and direction of relationships between"
+        "SalePrice and the numerical features"
+        "most strongly associated with it."
+        "Values closer to 1 indicate a stronger positive relationship, while"
+        "values closer to -1 indicate a stronger negative relationship."
+    )
 
     st.subheader("Top Features Correlated with Sale Price")
 
@@ -213,6 +251,7 @@ elif page == "Data Exploration":
     ax.set_title("Top 10 Features Correlated with Sale Price")
 
     st.pyplot(fig)
+    plt.close(fig)
 
     st.subheader("Sale Price by Overall Quality")
 
@@ -229,6 +268,7 @@ elif page == "Data Exploration":
     ax.set_ylabel("Sale Price")
 
     st.pyplot(fig)
+    plt.close(fig)
 
     st.info(
         "Higher Overall Quality ratings are associated"
@@ -247,6 +287,7 @@ elif page == "Data Exploration":
     ax.set_title("Living Area vs Sale Price")
 
     st.pyplot(fig)
+    plt.close(fig)
 
     st.info(
         "Homes with larger living areas generally sell for higher prices, "
@@ -264,10 +305,38 @@ elif page == "Data Exploration":
     ax.set_title("Year Built vs Sale Price")
 
     st.pyplot(fig)
+    plt.close(fig)
 
     st.info(
         "Newer houses generally achieve higher sale prices, "
         "although other factors also influence value."
+    )
+    
+    st.subheader("Exploration Summary")
+
+    st.markdown(
+        """
+        The exploratory analysis identified several important findings:
+
+        - Higher overall quality is strongly associated 
+        with higher sale prices.
+        - Larger above-ground living areas generally 
+        correspond to higher prices.
+        - Newer properties tend to achieve higher prices, although the
+          relationship is influenced by other property characteristics.
+        - Garage-related and total-area variables also show meaningful
+          relationships with sale price.
+        - The target variable contains a smaller number of high-value
+          properties, making these properties potentially more difficult to
+          predict accurately.
+        """
+    )
+
+    st.success(
+        """
+        The analysis supports the use of property quality, size, age and
+        garage-related features in the predictive model.
+        """
     )
 
 elif page == "Model Performance":
@@ -301,6 +370,22 @@ elif page == "Model Performance":
         "generalises reliably across different data subsets."
     )
 
+    st.subheader("Model Selection")
+
+    st.write(
+        f"""
+        Four regression algorithms were evaluated during model development:
+
+        - Linear Regression
+        - Ridge Regression
+        - Random Forest
+        - Gradient Boosting
+
+        {model_name} achieved the strongest overall performance and was
+        therefore selected as the final deployed model.
+        """
+    )
+
 elif page == "House Price Prediction":
     st.title("House Price Prediction")
 
@@ -312,6 +397,19 @@ elif page == "House Price Prediction":
     features are automatically assigned typical values from the training
     dataset.
     """)
+
+    st.subheader("How to Use")
+
+    st.write(
+        """
+        Enter the available property characteristics below and click
+        **Predict Sale Price**.
+
+        Only the most influential variables are entered manually.
+        Remaining variables are assigned representative values from the
+        training dataset before the prediction is generated.
+        """
+    )
 
     col1, col2 = st.columns(2)
 
