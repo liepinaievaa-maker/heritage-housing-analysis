@@ -237,6 +237,21 @@ elif page == "Data Exploration":
 
     st.subheader("Correlation Heatmap")
 
+    st.write(
+    """
+    Correlation measures the strength of the relationship between two
+    numerical variables.
+
+    Correlation values range from -1 to 1:
+    - Values close to **1** indicate a strong positive relationship.
+    - Values close to **-1** indicate a strong negative relationship.
+    - Values close to **0** indicate little or no linear relationship.
+
+    The heatmap below focuses on the numerical features that are most
+    strongly related to house sale price.
+    """
+    )
+
     numeric_df = df.select_dtypes(include=["number"])
 
     top_features = (
@@ -266,14 +281,28 @@ elif page == "Data Exploration":
     plt.close(fig)
 
     st.info(
-        "The heatmap shows the strength and direction of relationships between"
-        "SalePrice and the numerical features"
-        "most strongly associated with it."
-        "Values closer to 1 indicate a stronger positive relationship, while"
-        "values closer to -1 indicate a stronger negative relationship."
+        """
+        The heatmap shows that several numerical variables have strong positive
+        relationships with house sale price.
+
+        Overall quality, living area and garage-related features appear among
+        the strongest predictors, supporting their inclusion in the final
+        machine learning model.
+        """
     )
 
     st.subheader("Top Features Correlated with Sale Price")
+
+    st.write(
+        """
+        This bar chart ranks the numerical features according to the strength
+        of their positive correlation with house sale price.
+
+        Features with larger correlation values tend to have a stronger
+        relationship with the target variable and may be more useful for
+        prediction.
+        """
+    )
 
     corr = numeric_df.corr()["SalePrice"].sort_values(ascending=False)
 
@@ -284,13 +313,38 @@ elif page == "Data Exploration":
         ax=ax
     )
 
-    ax.set_ylabel("Correlation")
-    ax.set_title("Top 10 Features Correlated with Sale Price")
+    ax.set_xlabel("Feature")
+    ax.set_ylabel("Correlation with Sale Price")
+    ax.set_title("Top 10 Numerical Features Correlated with Sale Price")
+
+    plt.xticks(rotation=45, ha="right")
+    plt.tight_layout()
 
     st.pyplot(fig)
     plt.close(fig)
 
-    st.subheader("Sale Price by Overall Quality")
+    st.info(
+        """
+        Overall quality has the strongest observed numerical correlation with
+        sale price.
+
+        Living-area, garage and total-area features also show meaningful
+        positive relationships, suggesting that quality and usable space are
+        important factors in determining property value.
+        """
+    )
+
+    st.subheader("Relationship Between Overall Quality and Sale Price")
+
+    st.write(
+        """
+        `OverallQual` is a rating from 1 (very poor) to 10 (excellent) that
+        describes the overall material and finish quality of a property.
+
+        The boxplot below compares the distribution of house sale prices for
+        each quality rating.
+        """
+    )
 
     fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -301,25 +355,45 @@ elif page == "Data Exploration":
         ax=ax
     )
 
-    ax.set_xlabel("Overall Quality")
+    ax.set_xlabel("Overall Quality Rating")
     ax.set_ylabel("Sale Price")
+    ax.set_title("Sale Price Distribution by Overall Quality")
 
     st.pyplot(fig)
     plt.close(fig)
 
     st.info(
-        "Higher Overall Quality ratings are associated"
-        " with higher house sale"
-        "prices, supporting one of the project's initial hypotheses."
+        """
+        Sale prices generally increase as the overall quality rating becomes
+        higher.
+
+        Higher-quality properties consistently achieve higher sale prices,
+        supporting the project's hypothesis that overall quality is one of the
+        strongest predictors of property value.
+        """
     )
 
-    st.subheader("Sale Price vs Living Area")
+    st.subheader("Relationship Between Living Area and Sale Price")
+
+    st.write(
+        """
+        `GrLivArea` represents the above-ground living area of a property in
+        square feet.
+
+        The scatter plot below shows how house sale price changes as the amount
+        of living space increases.
+        """
+    )
 
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    ax.scatter(df["GrLivArea"], df["SalePrice"], alpha=0.5)
+    ax.scatter(
+        df["GrLivArea"],
+        df["SalePrice"],
+        alpha=0.5
+    )
 
-    ax.set_xlabel("Ground Living Area")
+    ax.set_xlabel("Above-Ground Living Area (sq ft)")
     ax.set_ylabel("Sale Price")
     ax.set_title("Living Area vs Sale Price")
 
@@ -327,15 +401,39 @@ elif page == "Data Exploration":
     plt.close(fig)
 
     st.info(
-        "Homes with larger living areas generally sell for higher prices, "
-        "supporting the second hypothesis."
+        """
+        Properties with larger above-ground living
+        areas generally achieve higher
+        sale prices.
+
+        The relationship is positive, although there
+        is some variation between
+        properties of similar size. This suggests
+        that living area is important,
+        but other characteristics such as quality,
+          age and location also influence
+        the final sale price.
+        """
     )
 
-    st.subheader("Sale Price vs Year Built")
+    st.subheader("Relationship Between Year Built and Sale Price")
+
+    st.write(
+        """
+        The construction year provides an indication of the age of a property.
+
+        The scatter plot below explores whether newer houses tend to achieve
+        higher sale prices than older properties.
+        """
+    )
 
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    ax.scatter(df["YearBuilt"], df["SalePrice"], alpha=0.5)
+    ax.scatter(
+        df["YearBuilt"],
+        df["SalePrice"],
+        alpha=0.5
+    )
 
     ax.set_xlabel("Year Built")
     ax.set_ylabel("Sale Price")
@@ -345,34 +443,47 @@ elif page == "Data Exploration":
     plt.close(fig)
 
     st.info(
-        "Newer houses generally achieve higher sale prices, "
-        "although other factors also influence value."
+        """
+        Newer properties generally achieve higher sale prices than older
+        properties.
+
+        However, the relationship is weaker than for overall quality or living
+        area, indicating that the age of a property is only one of several
+        factors that influence its market value.
+        """
     )
-    
+
     st.subheader("Exploration Summary")
+
+    st.write(
+        """
+        The exploratory data analysis identified several important patterns
+        within the Ames Housing dataset that informed the development of the
+        predictive model.
+        """
+    )
 
     st.markdown(
         """
-        The exploratory analysis identified several important findings:
-
-        - Higher overall quality is strongly associated 
-        with higher sale prices.
-        - Larger above-ground living areas generally 
-        correspond to higher prices.
-        - Newer properties tend to achieve higher prices, although the
-          relationship is influenced by other property characteristics.
-        - Garage-related and total-area variables also show meaningful
-          relationships with sale price.
-        - The target variable contains a smaller number of high-value
-          properties, making these properties potentially more difficult to
-          predict accurately.
+        - **Overall quality** shows the strongest relationship with house sale
+        price.
+        - **Living area** is positively associated with property value, with
+        larger homes generally selling for higher prices.
+        - **Year built** has a positive relationship with sale price, although
+        its influence is weaker than quality and living area.
+        - **Garage-related** and **total-area** features also contribute useful
+        information for predicting sale price.
+        - The distribution of sale prices is **right-skewed**, with relatively
+        few high-value properties compared with the majority of homes.
         """
     )
 
     st.success(
         """
-        The analysis supports the use of property quality, size, age and
-        garage-related features in the predictive model.
+        Overall, the exploratory analysis supports the project's hypotheses and
+        confirms that property quality, size, age and garage
+        characteristics are
+        valuable predictors for estimating house sale prices.
         """
     )
 
