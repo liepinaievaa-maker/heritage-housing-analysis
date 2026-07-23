@@ -4,6 +4,14 @@
 
 - A machine learning project that analyses residential property data and predicts house sale prices using a Gradient Boosting regression model. The project follows a complete data science workflow, including business understanding, data exploration, data cleaning, feature engineering, model comparison, model evaluation, and deployment through an interactive Streamlit dashboard.
 
+### Live Application
+
+Heroku:
+https://YOUR-APP.herokuapp.com
+
+GitHub Repository:
+https://github.com/liepinaievaa-maker/heritage-housing-analysis
+
 ---
 
 ## Table of Contents
@@ -630,6 +638,49 @@ The following items are considered future enhancements rather than unresolved bu
 
 ---
 
+## Repository
+
+The source code for this project is available on GitHub:
+
+GitHub Repository:
+https://github.com/liepinaievaa-maker/heritage-housing-analysis
+
+---
+
+## Clone the Repository
+
+To clone this repository to your local machine:
+
+1. Open your terminal or Git Bash.
+2. Navigate to the directory where you would like to store the project.
+3. Run the following command:
+
+```bash
+git clone https://github.com/liepinaievaa-maker/heritage-housing-analysis.git
+```
+
+4. Move into the project folder:
+
+```bash
+cd heritage-housing-analysis
+```
+
+5. (Optional) Create and activate a virtual environment before installing the project requirements.
+
+6. Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+7. Start the Streamlit application:
+
+```bash
+streamlit run app.py
+```
+
+---
+
 ## Deployment
 
 ### Heroku
@@ -679,12 +730,29 @@ Main Libraries Used:
 ### Dataset
 
 - Code Institute Heritage Housing dataset
-- Ames Housing Dataset
+- Ames Housing Dataset provided through the Code Institute Predictive Analytics course.
 
 ### Learning Resources
 
 - Code Institute Predictive Analytics Walkthrough Project
 - [Code Institute Heritage Housing Walkthrough Repository](https://github.com/Code-Institute-Solutions/milestone-project-heritage-housing-issues)
+- Code Institute LMS
+- Scikit-learn Documentation
+- Streamlit Documentation
+- Pandas Documentation
+- Matplotlib Documentation
+- Seaborn Documentation
+
+### Tools Used
+
+The following tools were used during development:
+
+- Git & GitHub
+- Visual Studio Code
+- Jupyter Notebook
+- Streamlit
+- Heroku
+- Canva (workflow diagram)
 
 ## Documentation and References
 
@@ -710,10 +778,22 @@ The following official documentation resources were consulted during development
 
 ### Acknowledgements
 
-This project was developed as part of the Code Institute Predictive Analytics course. The Code Institute walkthrough project was used as a learning resource for understanding the predictive analytics workflow and overall project structure. The implementation, analysis, dashboard, and documentation in this repository were adapted and developed specifically for this project.
+This project was completed as part of the Code Institute Predictive Analytics programme.
+
+The Code Institute Heritage Housing walkthrough project provided valuable guidance for understanding the end-to-end machine learning workflow, including data exploration, preprocessing, model development, evaluation, and deployment.
+
+While inspired by the walkthrough structure, this project includes my own exploratory data analysis, model comparison, Streamlit dashboard implementation, documentation, and project organisation.
+
+---
+
+## License
+
+- This project was created for educational purposes as part of the Code Institute Predictive Analytics programme.
 
 ---
 
 ## Final Remarks
 
-- This project demonstrates the end-to-end development of a machine learning solution, from understanding the business problem through data preparation, model development, evaluation, deployment, and interactive prediction. The resulting dashboard provides an accessible way to estimate residential property sale prices based on key property characteristics.
+- This project demonstrates the complete development of a machine learning solution, from understanding the business problem and preparing the data to training, evaluating, and deploying a predictive model.
+
+The interactive Streamlit dashboard enables users to explore the analysis, review model performance, and estimate residential property sale prices using the trained Gradient Boosting regression model.
