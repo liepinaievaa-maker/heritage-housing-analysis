@@ -495,14 +495,14 @@ elif page == "Data Exploration":
 elif page == "Model Performance":
     st.title("Model Performance")
 
-    st.write(
+    st.markdown(
         f"""
-        This page presents the evaluation results of the final
-        **{model_name}** regression model.
+        This page presents the evaluation results of
+        the final **{model_name}** regression model.
 
-        The model was assessed using both training data and previously unseen
-        test data to determine how accurately it predicts house sale prices
-        and how well it generalises to new properties.
+        The model was assessed using both training data and previously
+        unseen test data to determine how accurately it predicts house
+        sale prices and how well it generalises to new properties.
         """
     )
 
@@ -531,7 +531,7 @@ elif page == "Model Performance":
 
     st.subheader("Model Interpretation")
 
-    st.write(
+    st.markdown(
         f"""
         The selected **{model_name}** model achieved a test R² score of
         **0.8892**, meaning that it explains approximately **88.9% of the
