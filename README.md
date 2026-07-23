@@ -137,7 +137,7 @@ Comparing model performance using training R², test R², cross-validation R², 
 
 Deploying the trained model within a Streamlit dashboard.
 
-![Project Workflow](images/readme/Work_Flow.png)
+![Project Workflow](images/readme/workflow.png)
 
 ## Exploratory Data Analysis
 
@@ -145,7 +145,7 @@ The exploratory analysis was conducted to better understand the housing dataset,
 
 ### Dataset Preview
 
-![Dataset Preview](images/readme/cleaned_dataset_preview.png)
+![Dataset Preview](images/readme/processed_dataset.png)
 
 The cleaned and engineered dataset contains 1,460 observations and 24 variables used during model development.
 
@@ -292,7 +292,7 @@ Although your friend has an excellent understanding of property prices in her ow
 
 * 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa.
 
-![Prediction Dashboard](images/readme/prediction_dashboard.png)
+![Prediction Dashboard](images/readme/house_price_prediction_dashboard.png)
 
 The project addresses the following business requirements:
 
@@ -419,7 +419,7 @@ The training R² score is higher than the test R² score, suggesting a small amo
 
 Overall, the Gradient Boosting model provides strong predictive performance and suitable generalisation for estimating the sale prices of unseen properties.
 
-![Model Performance](images/readme/Model_Performance_.PNG)
+![Model Performance](images/readme/model_performance.png)
 
 ### Actual vs Predicted Sale Prices
 
@@ -559,6 +559,21 @@ Testing was carried out throughout the project to confirm that the notebooks, da
 | Prediction result | Changing input values changes the predicted sale price | Pass |
 | Model loading | Saved model and feature list load without errors | Pass |
 
+#### Dashboard Verification
+
+The Streamlit dashboard was tested locally to verify that each page loaded correctly, navigation functioned as expected, visualisations were displayed without errors, and house price predictions were successfully generated.
+
+**Project Overview**
+
+![Project Overview](images/readme/project_overview_full.png)
+
+**Model Performance**
+
+![Model Performance](images/readme/model_performance_dashboard.png)
+
+**Prediction Result**
+
+![Prediction Result](images/readme/prediction_result.png)
 ---
 
 ### Input Testing
@@ -580,6 +595,14 @@ Testing was carried out throughout the project to confirm that the notebooks, da
 | Model files | `.pkl` files exist and are readable | Pass |
 | Git repository | No virtual environment or temporary files are committed | Pass |
 | Notebook execution | Notebooks run from top to bottom after restarting the kernel | Pass |
+
+### Code Quality
+
+The project was checked using **Flake8** to verify that the Python code follows standard style guidelines.
+
+The final version of the application completed the Flake8 checks without reporting any errors.
+
+![Flake8 Testing](images/readme/flake8_testing.png)
 
 ### Known Testing Limitations
 
