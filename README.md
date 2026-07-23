@@ -1,8 +1,8 @@
-//** Moc **//
+
 
 # Heritage Housing Analysis
 
-- A machine learning project that analyzes residential property data and predicts house sale prices using Linear Regression. The project follows a complete data science workflow, including business understanding, data exploration, data cleaning, feature engineering, model training, and evaluation.
+- A machine learning project that analyses residential property data and predicts house sale prices using a Gradient Boosting regression model. The project follows a complete data science workflow, including business understanding, data exploration, data cleaning, feature engineering, model comparison, model evaluation, and deployment through an interactive Streamlit dashboard.
 
 ---
 
@@ -57,7 +57,8 @@ The objectives of this project were to:
 - Understand the Ames Housing dataset.
 - Clean and prepare the data for analysis.
 - Engineer meaningful features to improve model performance.
-- Train and evaluate a Linear Regression model.
+- Train and compare multiple regression models.
+- Select the strongest-performing model for deployment.
 - Export the trained model for deployment.
 - Build an interactive Streamlit dashboard for house price prediction.
 
@@ -126,11 +127,11 @@ Cleaning missing values, encoding categorical variables, scaling features where 
 
 ## 4. Modelling
 
-Training and evaluating a Linear Regression model.
+Training and comparing Linear Regression, Ridge Regression, Random Forest Regression, and Gradient Boosting Regression models.
 
 ## 5. Evaluation
 
-Assessing model performance using MAE, RMSE, R² score, and prediction visualisations.
+Comparing model performance using training R², test R², cross-validation R², Mean Absolute Error, and Root Mean Squared Error.
 
 ## 6. Deployment
 
@@ -146,7 +147,7 @@ The exploratory analysis was conducted to better understand the housing dataset,
 
 ![Dataset Preview](images/readme/cleaned_dataset_preview.png)
 
-The cleaned dataset contains 1,460 observations and 29 engineered features used to train the prediction model.
+The cleaned and engineered dataset contains 1,460 observations and 24 variables used during model development.
 
 ---
 
@@ -323,7 +324,7 @@ Predict the sale price of inherited houses and other properties.
 
 - Cleaned and prepared the dataset.
 - Engineered additional predictive features.
-- Trained and evaluated a Linear Regression model.
+- Trained, compared, and evaluated multiple regression models before selecting Gradient Boosting Regression as the final deployment model.
 
 ---
 
@@ -354,16 +355,22 @@ The target variable is **SalePrice**, representing the final selling price of ea
 
 ### Success Criteria
 
-The project was considered successful if the predictive model achieved an R² score greater than 0.75 on unseen data.
+The project was considered successful if the selected predictive model achieved an R² score greater than **0.75** on unseen test data.
 
-The final Linear Regression model achieved an **R² score of 0.8477**, exceeding the agreed business requirement and demonstrating that the selected features provide a reliable basis for predicting residential property prices.
+The final Gradient Boosting regression model achieved:
+
+- Test R²: **0.8892**
+- Cross-validation R²: **0.8607**
+- Mean Absolute Error: **$17,953.97**
+- Root Mean Squared Error: **$29,149.13**
+
+The model exceeded the project success criterion, demonstrating that the selected original and engineered features provide a reliable basis for predicting residential property sale prices.
 
 ---
 
 ## House Price Prediction
 
-The Streamlit dashboard allows users to enter six important property
-characteristics:
+The Streamlit dashboard allows users to enter six important property characteristics:
 
 - Overall quality
 - Above-ground living area
@@ -372,47 +379,51 @@ characteristics:
 - Lot area
 - Kitchen quality
 
+The trained Gradient Boosting regression model uses these values to estimate the property's sale price.
 
-The trained Linear Regression model uses these inputs to estimate the
-property's sale price. Features not entered through the form are assigned
-median values from the training dataset.
+Only the most influential and understandable characteristics are entered manually. Features not included in the form are automatically assigned representative median values from the processed training dataset.
 
-Predictions are intended as data-driven estimates rather than professional
-property valuations. The model achieved an R² score of 0.8477 and a Mean
-Absolute Error of approximately $21,243 on unseen test data.
+The application also updates relevant engineered features, such as whether the property has a garage, before generating the prediction.
+
+Predictions should be interpreted as data-driven estimates rather than professional property valuations. The selected model achieved a test R² score of **0.8892** and a Mean Absolute Error of approximately **$17,954** on unseen test data.
 
 ---
 
 ## Model Evaluation
 
-A Linear Regression model was trained using the cleaned and engineered housing dataset.
 
-The data was split into:
+Four regression algorithms were trained and evaluated:
 
-- 80% training data
-- 20% test data
-- `random_state=42` for reproducibility
+- Linear Regression
+- Ridge Regression
+- Random Forest Regression
+- Gradient Boosting Regression
 
-The model achieved the following results:
+The models were compared using training R², test R², cross-validation R², Mean Absolute Error, and Root Mean Squared Error.
+
+Gradient Boosting Regression achieved the strongest overall performance and was selected as the final deployed model.
 
 | Metric | Result |
 |---|---:|
-| Training R² | 0.8141 |
-| Test R² | 0.8477 |
-| Mean Absolute Error | $21,242.82 |
-| Root Mean Squared Error | $34,178.36 |
+| Training R² | 0.9633 |
+| Test R² | 0.8892 |
+| Cross-validation R² | 0.8607 |
+| Mean Absolute Error | $17,953.97 |
+| Root Mean Squared Error | $29,149.13 |
 
-The Linear Regression model achieved an R² score of approximately 0.85, indicating that it explains around 85% of the variation in house sale prices. Predictions are generally accurate for low- and medium-priced properties. However, the Actual vs Predicted plot shows larger prediction errors for higher-priced homes, suggesting that Linear Regression has limitations when modelling extreme property values.
+The test R² score indicates that the model explains approximately **88.9% of the variation in house sale prices** within the unseen test data.
 
-The similar training and test R² scores suggest that the model generalises well to unseen data and does not show strong evidence of overfitting.
+The Mean Absolute Error indicates that predicted sale prices differ from actual sale prices by approximately **$17,954 on average**.
 
-The Actual vs Predicted visualisation shows that most estimates are positioned close to the diagonal reference line. However, the model tends to underestimate some of the most expensive properties.
+The training R² score is higher than the test R² score, suggesting a small amount of overfitting. However, the strong cross-validation score demonstrates that the model performs consistently across different subsets of the dataset.
+
+Overall, the Gradient Boosting model provides strong predictive performance and suitable generalisation for estimating the sale prices of unseen properties.
 
 ![Model Performance](images/readme/Model_Performance_.PNG)
 
 ### Actual vs Predicted Sale Prices
 
-- The scatter plot compares the model's predicted sale prices with the actual values from the test dataset. Most observations lie close to the diagonal reference line, indicating that the Linear Regression model predicts house prices with good overall accuracy. Larger deviations occur mainly for the highest-priced properties, showing that the model is less accurate for extreme values.
+- The scatter plot compares the model's predicted sale prices with the actual values from the test dataset. Most observations lie close to the diagonal reference line, indicating that the Gradient Boosting Regression model predicts house prices with good overall accuracy. Larger deviations occur mainly for the highest-priced properties, showing that the model is less accurate for extreme values.
 
 ![Actual vs Predicted](images/readme/actual_vs_predicted.png)
 
@@ -420,14 +431,14 @@ The Actual vs Predicted visualisation shows that most estimates are positioned c
 
 ## Model Limitations
 
-Although the model achieved strong predictive performance, it has several limitations:
+Although the selected Gradient Boosting model achieved strong predictive performance, it has several limitations:
 
-- Linear Regression assumes linear relationships between the property features and sale price.
-- Some high-value properties are underestimated.
-- Outliers may influence the model’s coefficients and predictions.
-- The Streamlit prediction form collects six selected property characteristics, while the remaining model inputs are assigned typical values from the training dataset.
-- The model was trained using historical data from Ames, Iowa and may not generalise to other locations or future market conditions.
-- The prediction result should be treated as an estimate rather than a professional property valuation.
+- The model was trained using historical housing data from Ames, Iowa and may not generalise to other locations.
+- Historical property values may not represent current or future housing-market conditions.
+- Some unusual, luxury, or high-value properties may be more difficult to predict accurately.
+- The Streamlit prediction form collects six selected property characteristics, while the remaining model inputs are assigned representative median values.
+- Using median values for unspecified characteristics means the prediction may not fully represent every individual property.
+- The prediction should be treated as an estimate rather than a professional property valuation.
 
 ---
 
@@ -435,24 +446,37 @@ Although the model achieved strong predictive performance, it has several limita
 
 Future versions of the project could:
 
-- Compare Linear Regression with Random Forest, Gradient Boosting, and other regression algorithms.
-- Use cross-validation for a more robust evaluation.
-- Investigate transformations of the `SalePrice` variable.
-- Expand the dashboard form to include more property characteristics.
-- Compare model performance before and after feature engineering.
+- Expand the prediction form to include additional property characteristics.
+- Use a complete preprocessing and prediction pipeline to simplify deployment.
+- Perform hyperparameter optimisation for the selected Gradient Boosting model.
+- Investigate additional algorithms such as XGBoost or LightGBM.
+- Analyse model feature importance in greater detail.
+- Investigate transformations of the `SalePrice` target variable.
+- Add prediction intervals to communicate uncertainty.
 - Retrain the model using more recent property-market data.
+- Extend the model to other geographical locations.
 
 ---
 
 ## Conclusions
 
-- This project successfully developed a machine learning solution for predicting house sale prices in Ames, Iowa.
+This project successfully developed an end-to-end machine learning solution for predicting house sale prices in Ames, Iowa.
 
-- The exploratory data analysis confirmed that **Overall Quality, Ground Living Area, Garage Area, Basement Area, and Year Built** are among the strongest predictors of sale price.
+Exploratory data analysis showed that overall quality, above-ground living area, garage characteristics, total-area features, and construction year are important indicators of sale price.
 
-- The Linear Regression model achieved an **R² score of 0.8477**, exceeding the project success criterion (**R² > 0.75**) and providing reliable predictions for most residential properties. The evaluation also showed that prediction accuracy decreases for some higher-value houses, highlighting one limitation of the model.
+Four regression algorithms were compared during model development. Gradient Boosting Regression achieved the strongest overall performance and was selected for deployment.
 
-- Overall, both business requirements were successfully addressed through data exploration, feature engineering, model development, and deployment within a Streamlit dashboard.
+The final model achieved:
+
+- Training R²: **0.9633**
+- Test R²: **0.8892**
+- Cross-validation R²: **0.8607**
+- Mean Absolute Error: **$17,953.97**
+- Root Mean Squared Error: **$29,149.13**
+
+The model exceeded the project success criterion of R² greater than 0.75 and demonstrated strong performance on unseen data.
+
+Both business requirements were addressed through exploratory analysis, feature engineering, model comparison, evaluation, and deployment within an interactive Streamlit dashboard.
 
 ### Hypothesis Validation
 
@@ -555,9 +579,9 @@ At the time of submission, no critical bugs affecting the functionality of the n
 
 Future improvements include:
 
-- Comparing additional machine learning models.
-- Expanding the Streamlit dashboard with more interactive visualisations.
-- Improving feature engineering with additional domain-specific variables.
+- Expanding the prediction form with additional property features.
+- Further tuning the Gradient Boosting model.
+- Adding feature importance visualisations.
 
 ---
 
@@ -595,10 +619,10 @@ Main Libraries Used:
 - Seaborn was used to create higher-level statistical visualisations, including the correlation heatmap and boxplots that supported the exploratory data analysis.
 
 ### Scikit-learn
-- Scikit-learn was used to split the dataset into training and testing sets, train the Linear Regression model, evaluate its performance using MAE, RMSE, and R² metrics, and export the trained model for deployment.
+- Scikit-learn was used to split the dataset into training and testing sets, preprocess model features, train and compare Linear Regression, Ridge Regression, Random Forest Regression, and Gradient Boosting Regression models, perform cross-validation, and evaluate model performance using MAE, RMSE, and R².
 
 ### Joblib
-- Joblib was used to save and load the trained Linear Regression model together with the feature list required by the prediction dashboard.
+- Joblib was used to save and load the selected Gradient Boosting regression model, the model feature list, and the model name required by the Streamlit dashboard.
 
 ### Streamlit
 - Streamlit was used to develop the interactive dashboard, allowing users to explore the dataset, review the model performance, and generate house price predictions.
