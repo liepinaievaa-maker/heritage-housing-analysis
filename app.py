@@ -558,8 +558,8 @@ elif page == "Model Performance":
         trained on.
 
         This difference suggests a small amount of overfitting. However, the
-        cross-validation R² score of **0.8607** remains 
-        strong and indicates that the model performs consistently 
+        cross-validation R² score of **0.8607** remains
+        strong and indicates that the model performs consistently
         across different subsets of the dataset.
 
         Overall, the model demonstrates good generalisation performance and is
@@ -570,10 +570,10 @@ elif page == "Model Performance":
     st.subheader("Model Selection")
 
     st.write(
-        f"""
-        Several regression algorithms were evaluated during model development to
-        identify the model that provided the most accurate and reliable house
-        price predictions.
+        """
+        Several regression algorithms were evaluated during
+        model development to identify the model that provided
+        the most accurate and reliable house price predictions.
 
         The models compared were:
 
@@ -755,11 +755,11 @@ elif page == "House Price Prediction":
 
         st.info(
             """
-            Features that were not entered manually were 
+            Features that were not entered manually were
             assigned representative
             median values from the training dataset.
 
-            As a result, the prediction should be 
+            As a result, the prediction should be
             interpreted as an estimate rather
             than an exact market valuation.
             """
@@ -767,7 +767,7 @@ elif page == "House Price Prediction":
 
         st.caption(
             """
-            This prediction is based on historical housing 
+            This prediction is based on historical housing
             data from Ames, Iowa.
             It should not be used as a substitute for a professional property
             valuation.
