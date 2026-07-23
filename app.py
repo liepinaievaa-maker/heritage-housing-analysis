@@ -2,6 +2,8 @@ import seaborn as sns
 
 import matplotlib.pyplot as plt
 
+from matplotlib.ticker import StrMethodFormatter
+
 import streamlit as st
 
 import pandas as pd
@@ -36,12 +38,12 @@ if page == "Project Overview":
     st.title("Heritage Housing Analysis")
 
     st.write(
-        """
+        f"""
         This dashboard presents the results of a predictive analytics project
         based on residential property data from Ames, Iowa.
 
         The project investigates the property characteristics associated with
-        house sale prices and uses a Gradient Boosting regression model to
+        house sale prices and uses a **{model_name}** regression model to
         estimate property values.
         """
     )
@@ -152,7 +154,7 @@ elif page == "Business Understanding":
         - **Overall Quality:** Supported. Properties with higher quality
           ratings generally achieved higher sale prices.
 
-        - **Living Area:** Supported. Larger ground-floor living areas were
+        - **Living Area:** Supported. Larger above-ground living areas were
           positively associated with sale price.
 
         - **Year Built:** Partially supported. Newer properties generally
@@ -221,6 +223,7 @@ elif page == "Data Exploration":
     ax.set_xlabel("Sale Price")
     ax.set_ylabel("Number of Houses")
     ax.set_title("Distribution of Sale Prices")
+    ax.xaxis.set_major_formatter(StrMethodFormatter("${x:,.0f}"))
 
     st.pyplot(fig)
     plt.close(fig)
@@ -238,18 +241,19 @@ elif page == "Data Exploration":
     st.subheader("Correlation Heatmap")
 
     st.write(
-    """
-    Correlation measures the strength of the relationship between two
-    numerical variables.
+        """
+        Correlation measures the strength of the relationship between two
+        numerical variables.
 
-    Correlation values range from -1 to 1:
-    - Values close to **1** indicate a strong positive relationship.
-    - Values close to **-1** indicate a strong negative relationship.
-    - Values close to **0** indicate little or no linear relationship.
+        Correlation values range from -1 to 1:
 
-    The heatmap below focuses on the numerical features that are most
-    strongly related to house sale price.
-    """
+        - Values close to **1** indicate a strong positive relationship.
+        - Values close to **-1** indicate a strong negative relationship.
+        - Values close to **0** indicate little or no linear relationship.
+
+        The heatmap below focuses on the numerical features that are most
+        strongly related to house sale price.
+        """
     )
 
     numeric_df = df.select_dtypes(include=["number"])
@@ -358,6 +362,7 @@ elif page == "Data Exploration":
     ax.set_xlabel("Overall Quality Rating")
     ax.set_ylabel("Sale Price")
     ax.set_title("Sale Price Distribution by Overall Quality")
+    ax.yaxis.set_major_formatter(StrMethodFormatter("${x:,.0f}"))
 
     st.pyplot(fig)
     plt.close(fig)
@@ -396,6 +401,7 @@ elif page == "Data Exploration":
     ax.set_xlabel("Above-Ground Living Area (sq ft)")
     ax.set_ylabel("Sale Price")
     ax.set_title("Living Area vs Sale Price")
+    ax.yaxis.set_major_formatter(StrMethodFormatter("${x:,.0f}"))
 
     st.pyplot(fig)
     plt.close(fig)
@@ -403,15 +409,13 @@ elif page == "Data Exploration":
     st.info(
         """
         Properties with larger above-ground living
-        areas generally achieve higher
-        sale prices.
+        areas generally achieve higher sale prices.
 
         The relationship is positive, although there
-        is some variation between
-        properties of similar size. This suggests
-        that living area is important,
+        is some variation between properties of similar size.
+        This suggests that living area is important,
         but other characteristics such as quality,
-          age and location also influence
+        age and location also influence
         the final sale price.
         """
     )
@@ -438,6 +442,7 @@ elif page == "Data Exploration":
     ax.set_xlabel("Year Built")
     ax.set_ylabel("Sale Price")
     ax.set_title("Year Built vs Sale Price")
+    ax.yaxis.set_major_formatter(StrMethodFormatter("${x:,.0f}"))
 
     st.pyplot(fig)
     plt.close(fig)
@@ -508,61 +513,129 @@ elif page == "Model Performance":
     col3.metric("Mean Absolute Error", "$17,953.97")
     col4.metric("Root Mean Squared Error", "$29,149.13")
 
+    st.caption(
+        """
+        **Training R²** shows how well the model fits the training data.
+
+        **Test R²** measures how well the model predicts previously
+        unseen data.
+
+        **Mean Absolute Error (MAE)** represents the average difference between
+        predicted and actual sale prices.
+
+        **Root Mean Squared Error (RMSE)** gives greater weight to larger
+        prediction errors and provides an indication of the model's overall
+        prediction accuracy.
+        """
+    )
+
     st.subheader("Model Interpretation")
 
     st.write(
-        "The selected Gradient Boosting model explains approximately 88.9% "
-        "of the variation in sale prices on unseen test data."
-        "Its Mean Absolute "
-        "Error indicates that predictions differ from actual sale prices by "
-        "approximately $17,954 on average."
+        f"""
+        The selected **{model_name}** model achieved a test R² score of
+        **0.8892**, meaning that it explains approximately **88.9% of the
+        variation in house sale prices** within the unseen test data.
+
+        The model's Mean Absolute Error of **$17,953.97** indicates that its
+        predicted sale prices differ from the actual sale
+        prices by approximately **$17,954 on average**.
+
+        The Root Mean Squared Error of **$29,149.13** is higher than the MAE
+        because it gives greater weight to larger prediction errors.
+        This suggests that although most predictions
+        are reasonably accurate, some properties
+        are more difficult to predict.
+        """
     )
 
+    st.subheader("Generalisation Performance")
+
     st.info(
-        "The model performs strongly on unseen test data. The higher training "
-        "score indicates some difference between training and test performance, "
-        "but the cross-validation R² score of 0.8607 suggests that the model "
-        "generalises reliably across different data subsets."
+        """
+        The training R² score of **0.9633** is higher than the test R² score of
+        **0.8892**, showing that the model performs better on the data it was
+        trained on.
+
+        This difference suggests a small amount of overfitting. However, the
+        cross-validation R² score of **0.8607** remains 
+        strong and indicates that the model performs consistently 
+        across different subsets of the dataset.
+
+        Overall, the model demonstrates good generalisation performance and is
+        suitable for producing house-price estimates on unseen property data.
+        """
     )
 
     st.subheader("Model Selection")
 
     st.write(
         f"""
-        Four regression algorithms were evaluated during model development:
+        Several regression algorithms were evaluated during model development to
+        identify the model that provided the most accurate and reliable house
+        price predictions.
 
-        - Linear Regression
-        - Ridge Regression
-        - Random Forest
-        - Gradient Boosting
+        The models compared were:
 
-        {model_name} achieved the strongest overall performance and was
-        therefore selected as the final deployed model.
+        - **Linear Regression**
+        - **Ridge Regression**
+        - **Random Forest Regression**
+        - **Gradient Boosting Regression**
+        """
+    )
+
+    st.info(
+        f"""
+        **{model_name}** achieved the strongest overall
+        performance by combining:
+
+        - the highest test R² score,
+        - the lowest prediction errors,
+        - and strong cross-validation performance.
+
+        Based on these evaluation results, it was selected as the final model
+        deployed within this dashboard.
         """
     )
 
 elif page == "House Price Prediction":
     st.title("House Price Prediction")
 
-    st.write("""
-    Enter the property characteristics below to estimate the predicted
-    sale price of a house in Ames, Iowa.
+    st.write(
+        f"""
+        This page allows users to generate an estimated sale price for a
+        residential property in Ames, Iowa, using the trained
+        **{model_name}** regression model.
 
-    Only the most influential features are entered by the user. Remaining
-    features are automatically assigned typical values from the training
-    dataset.
-    """)
+        Enter the available property characteristics below.
+        The application will combine these values with representative
+        values for the remaining model
+        features before generating the prediction.
+        """
+    )
 
     st.subheader("How to Use")
 
+    st.markdown(
+        """
+        1. Enter the available property characteristics in the form below.
+        2. Review the values before generating the estimate.
+        3. Click **Predict Sale Price**.
+        4. The application will display the estimated property value.
+
+        Only the most influential features are entered manually. Features that
+        are not included in the form are automatically assigned representative
+        values from the training dataset.
+        """
+    )
+
+    st.subheader("Property Characteristics")
+
     st.write(
         """
-        Enter the available property characteristics below and click
-        **Predict Sale Price**.
-
-        Only the most influential variables are entered manually.
-        Remaining variables are assigned representative values from the
-        training dataset before the prediction is generated.
+        Enter the known characteristics of the property below. These variables
+        were selected because they have a strong influence on house sale prices
+        and are used by the prediction model to estimate the property's value.
         """
     )
 
@@ -666,20 +739,37 @@ elif page == "House Price Prediction":
 
         prediction = model.predict(input_data)[0]
 
-        st.success(f"Estimated Sale Price: ${prediction:,.0f}")
+        st.subheader("Prediction Result")
+
+        st.success(
+            f"Estimated Sale Price: **${prediction:,.0f}**"
+        )
+
+        st.write(
+            f"""
+            The estimated sale price was generated using the trained
+            **{model_name}** regression model and the property characteristics
+            entered above.
+            """
+        )
 
         st.info(
-            f"""
-            This estimate is generated using the trained {model_name} model.
+            """
+            Features that were not entered manually were 
+            assigned representative
+            median values from the training dataset.
 
-            Only six property characteristics are entered by the user.
-            All remaining features are automatically filled with typical
-            values from the training dataset.
+            As a result, the prediction should be 
+            interpreted as an estimate rather
+            than an exact market valuation.
             """
         )
 
         st.caption(
-            "Predictions are estimates based on historical housing data "
-            "and should not be interpreted as "
-            "professional property valuations."
+            """
+            This prediction is based on historical housing 
+            data from Ames, Iowa.
+            It should not be used as a substitute for a professional property
+            valuation.
+            """
         )
