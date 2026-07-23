@@ -532,6 +532,8 @@ After entering the property information and clicking **Predict Sale Price**, the
 
 ![Prediction Result](images/readme/prediction_result.png)
 
+---
+
 ## Testing
 
 Testing was carried out throughout the project to confirm that the notebooks, dashboard, prediction functionality, and deployment files behaved as expected.
@@ -595,6 +597,7 @@ The Streamlit dashboard was tested locally to verify that each page loaded corre
 | Model files | `.pkl` files exist and are readable | Pass |
 | Git repository | No virtual environment or temporary files are committed | Pass |
 | Notebook execution | Notebooks run from top to bottom after restarting the kernel | Pass |
+| Flake8 validation | `python -m flake8 app.py` completes without reporting errors | Pass |
 
 ### Code Quality
 
@@ -614,13 +617,16 @@ The final version of the application completed the Flake8 checks without reporti
 
 ## Unfixed Bugs
 
-At the time of submission, no critical bugs affecting the functionality of the notebooks were identified.
+- At the time of writing, no known critical bugs affect the functionality of the notebooks, dashboard, or prediction system.
 
-Future improvements include:
+- The application loads the exported model successfully, all dashboard pages display correctly, and house price predictions can be generated from the user inputs.
+
+The following items are considered future enhancements rather than unresolved bugs:
 
 - Expanding the prediction form with additional property features.
 - Further tuning the Gradient Boosting model.
-- Adding feature importance visualisations.
+- Adding feature-importance visualisations.
+- Adding prediction intervals to communicate uncertainty.
 
 ---
 
