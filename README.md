@@ -492,29 +492,45 @@ Both business requirements were addressed through exploratory analysis, feature 
 
 ## Dashboard Design
 
-The Streamlit dashboard contains five pages:
+The Streamlit dashboard is organised into five pages that guide the user through the project, from understanding the business problem to generating house price predictions.
 
 ### Project Overview
 
-- Introduces the project, its purpose, and the housing-price prediction objective.
+The Project Overview page introduces the purpose of the project, outlines the business scenario, and provides an overview of the dashboard. It also displays the navigation menu, allowing users to move easily between each section of the application.
+
+![Project Overview](images/readme/project_overview_full.png)
+
+The introduction section summarises the project objectives and the machine learning approach used to estimate house sale prices.
+
+![Project Overview Introduction](images/readme/project_overview_intro.png)
 
 ### Business Understanding
 
-- Explains the client problem, project hypotheses, and the validation results.
+The Business Understanding page explains the client's requirements, presents the project hypotheses, and summarises whether each hypothesis was supported after analysing the dataset.
+
+![Business Understanding](images/readme/business_understanding.png)
 
 ### Data Exploration
 
-- Displays the dataset preview, sale-price distribution, correlation heatmap, top correlated features, and visualisations used to assess the hypotheses.
+The Data Exploration page presents the processed dataset together with the key visualisations used to understand the data and identify relationships between property characteristics and sale price.
+
+![Data Exploration](images/readme/data_exploration.png)
 
 ### Model Performance
 
-- Presents MAE, RMSE, R², and a short interpretation of model performance.
+The Model Performance page compares the trained regression models, presents the evaluation metrics for the selected Gradient Boosting model, and explains why it was chosen for deployment.
+
+![Model Performance](images/readme/model_performance_dashboard.png)
 
 ### House Price Prediction
 
-- Allows users to enter selected house characteristics and receive an estimated sale price from the trained model.
+The House Price Prediction page allows users to enter key property characteristics and generate an estimated sale price using the trained Gradient Boosting regression model.
 
----
+![Prediction Dashboard](images/readme/house_price_prediction_dashboard.png)
+
+After entering the property information and clicking **Predict Sale Price**, the dashboard displays the estimated market value.
+
+![Prediction Result](images/readme/prediction_result.png)
 
 ## Testing
 
