@@ -9,8 +9,7 @@
 Heroku:
 https://YOUR-APP.herokuapp.com
 
-GitHub Repository:
-https://github.com/liepinaievaa-maker/heritage-housing-analysis
+[GitHub Repository](https://github.com/liepinaievaa-maker/heritage-housing-analysis)
 
 ---
 
@@ -60,7 +59,7 @@ https://github.com/liepinaievaa-maker/heritage-housing-analysis
 
 ##  Project Objectives
 
-The objectives of this project were to:
+The project objectives were to:
 
 - Understand the Ames Housing dataset.
 - Clean and prepare the data for analysis.
@@ -393,7 +392,7 @@ Only the most influential and understandable characteristics are entered manuall
 
 The application also updates relevant engineered features, such as whether the property has a garage, before generating the prediction.
 
-Predictions should be interpreted as data-driven estimates rather than professional property valuations. The selected model achieved a test R² score of **0.8892** and a Mean Absolute Error of approximately **$17,954** on unseen test data.
+Predictions should be interpreted as estimates rather than professional property valuations. The selected model achieved a test R² score of **0.8892** and a Mean Absolute Error of approximately **$17,954** on unseen test data.
 
 ---
 
