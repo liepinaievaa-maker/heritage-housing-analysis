@@ -6,10 +6,9 @@
 
 ### Live Application
 
-Heroku:
-https://YOUR-APP.herokuapp.com
+The live Streamlit application can be accessed here:
 
-[GitHub Repository](https://github.com/liepinaievaa-maker/heritage-housing-analysis)
+[Heritage Housing Analysis Dashboard](https://ieva-heritage-housing-analysis-1e0ab3940ab0.herokuapp.com/)
 
 ---
 
@@ -606,6 +605,14 @@ The Streamlit dashboard was tested locally to verify that each page loaded corre
 | Notebook execution | Notebooks run from top to bottom after restarting the kernel | Pass |
 | Flake8 validation | `python -m flake8 app.py` completes without reporting errors | Pass |
 
+### Code Validation
+
+- The Python code used in this project was validated using the Code Institute Python Linter to ensure compliance with PEP 8 coding standards.
+
+- The main application file `app.py` was tested and successfully passed the validation with **no errors found**, confirming that the code follows the recommended Python style guidelines.
+
+![PEP 8 Testing](images/readme/pep8ci_testing.png)
+
 ### Code Quality
 
 The project was checked using **Flake8** to verify that the Python code follows standard style guidelines.
@@ -641,8 +648,7 @@ The following items are considered future enhancements rather than unresolved bu
 
 The source code for this project is available on GitHub:
 
-GitHub Repository:
-https://github.com/liepinaievaa-maker/heritage-housing-analysis
+[GitHub Repository](https://github.com/liepinaievaa-maker/heritage-housing-analysis)
 
 ---
 
@@ -684,16 +690,30 @@ streamlit run app.py
 
 ### Heroku
 
-* The App live link is: <https://YOUR_APP_NAME.herokuapp.com/>
-* Set the .python-version Python version to a [Heroku-24](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
+- The live application can be accessed here:
+[Heritage Housing Analysis Dashboard](https://ieva-heritage-housing-analysis-1e0ab3940ab0.herokuapp.com/) 
 
-1. Log in to Heroku and create an App
-2. At the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+The project was deployed to Heroku using the following steps:
+
+1. Created a new application in Heroku.
+2. Selected **GitHub** as the deployment method.
+3. Connected the Heroku application to the GitHub repository:
+   https://github.com/liepinaievaa-maker/heritage-housing-analysis
+4. Selected the **main** branch.
+5. Clicked **Deploy Branch** to build and deploy the application.
+6. Once the deployment completed successfully, the application was launched using the **Open App** button.
+7. Any further changes pushed to the `main` branch can be redeployed through Heroku.
+
+### Deployment Requirements
+
+The application requires the following deployment files:
+
+- `requirements.txt` – lists all required Python packages.
+- `Procfile` – specifies the command used to run the Streamlit application.
+- `.python-version` – specifies the Python version used by Heroku.
+- `.slugignore` – excludes unnecessary files from the deployment to reduce the slug size.
+
+During deployment, packages that were only required for exploratory data analysis (such as `ydata-profiling`, `yellowbrick`, and `ppscore`) were excluded from the deployed application because they were not required for running the Streamlit dashboard. This reduced the deployment size and allowed the application to deploy successfully.
 
 ---
 
