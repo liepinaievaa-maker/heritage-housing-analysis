@@ -491,7 +491,14 @@ elif page == "Model Performance":
     st.title("Model Performance")
 
     st.write(
-        f"The selected model, **{model_name}**, was evaluated on unseen test data."
+        f"""
+        This page presents the evaluation results of the final
+        **{model_name}** regression model.
+
+        The model was assessed using both training data and previously unseen
+        test data to determine how accurately it predicts house sale prices
+        and how well it generalises to new properties.
+        """
     )
 
     col1, col2, col3, col4 = st.columns(4)
