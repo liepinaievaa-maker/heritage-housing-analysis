@@ -10,16 +10,35 @@ import pandas as pd
 
 import joblib
 
-df = pd.read_csv("./outputs/engineered_house_prices.csv")
-model = joblib.load("./outputs/models/best_regression_model.pkl")
-model_features = joblib.load("./outputs/models/model_features.pkl")
-model_name = joblib.load("./outputs/models/model_name.pkl")
-
 st.set_page_config(
     page_title="Heritage Housing Analysis",
     page_icon="🏠",
     layout="wide",
 )
+
+
+@st.cache_data
+def load_data():
+    return pd.read_csv("./outputs/engineered_house_prices.csv")
+
+
+@st.cache_resource
+def load_model_files():
+    loaded_model = joblib.load(
+        "./outputs/models/best_regression_model.pkl"
+    )
+    loaded_features = joblib.load(
+        "./outputs/models/model_features.pkl"
+    )
+    loaded_model_name = joblib.load(
+        "./outputs/models/model_name.pkl"
+    )
+
+    return loaded_model, loaded_features, loaded_model_name
+
+
+df = load_data()
+model, model_features, model_name = load_model_files()
 
 st.sidebar.title("Navigation")
 
