@@ -532,21 +532,21 @@ elif page == "Model Performance":
     st.subheader("Model Interpretation")
 
     st.markdown(
-        f"""
-        The selected **{model_name}** model achieved a test R² score of
-        **0.8892**, meaning that it explains approximately **88.9% of the
-        variation in house sale prices** within the unseen test data.
+        f"The selected **{model_name}** model achieved a test R² score of "
+        "**0.8892**, meaning that it explains approximately **88.9% of the "
+        "variation in house sale prices** within the unseen test data."
+    )
 
-        The model's Mean Absolute Error of **$17,953.97** indicates that its
-        predicted sale prices differ from the actual sale
-        prices by approximately **$17,954 on average**.
+    st.markdown(
+        "The model's **Mean Absolute Error of $17,953.97** indicates that "
+        "predicted sale prices differ from actual sale prices by approximately"
+        "**$17,954 on average**."
+    )
 
-        The Root Mean Squared Error of **$29,149.13** is higher than the MAE
-        because it gives greater weight to larger prediction errors.
-        This suggests that although most predictions
-        are reasonably accurate, some properties
-        are more difficult to predict.
-        """
+    st.markdown(
+        "The **Root Mean Squared Error of $29,149.13** is higher than the MAE "
+        "because it gives greater weight to larger prediction errors. "
+        "This suggests that some properties are more difficult to predict."
     )
 
     st.subheader("Generalisation Performance")
