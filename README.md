@@ -472,7 +472,7 @@ This project successfully developed an end-to-end machine learning solution for 
 
 Exploratory data analysis showed that overall quality, above-ground living area, garage characteristics, total-area features, and construction year are important indicators of sale price.
 
-Four regression algorithms were compared during model development. Gradient Boosting Regression achieved the strongest overall performance and was selected for deployment.
+Four regression algorithms were trained and evaluated during model development. Through this iterative evaluation process, Gradient Boosting Regression demonstrated the best balance of predictive accuracy and generalisation and was therefore selected as the final model for deployment.
 
 The final model achieved:
 
@@ -625,8 +625,7 @@ The final version of the application completed the Flake8 checks without reporti
 
 ### Known Testing Limitations
 
-- Heroku deployment testing will be completed after the application is deployed.
-- Predictions are estimates based on historical Ames housing data.
+- Predictions are estimates based on historical Ames Housing data and should not be considered professional property valuations.
 - The dashboard uses six user-entered features while the remaining model inputs are assigned typical values from the training dataset.
 
 ---
@@ -700,7 +699,7 @@ The project was deployed to Heroku using the following steps:
 1. Created a new application in Heroku.
 2. Selected **GitHub** as the deployment method.
 3. Connected the Heroku application to the GitHub repository:
-   https://github.com/liepinaievaa-maker/heritage-housing-analysis
+[Heritage Housing Analysis Repository](https://github.com/liepinaievaa-maker/heritage-housing-analysis)
 4. Selected the **main** branch.
 5. Clicked **Deploy Branch** to build and deploy the application.
 6. Once the deployment completed successfully, the application was launched using the **Open App** button.
@@ -795,7 +794,7 @@ The following official documentation resources were consulted during development
 
 ### Design Resources
 
-- Workflow diagram created using [Canva](https://www.canva.com/)
+- Workflow diagram and application mockup were created using [Canva](https://www.canva.com/)
 
 ### Acknowledgements
 
