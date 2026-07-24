@@ -4,6 +4,8 @@
 
 - A machine learning project that analyses residential property data and predicts house sale prices using a Gradient Boosting regression model. The project follows a complete data science workflow, including business understanding, data exploration, data cleaning, feature engineering, model comparison, model evaluation, and deployment through an interactive Streamlit dashboard.
 
+![Mockup](images/readme/heritage_housing_analysis.png)
+
 ### Live Application
 
 The live Streamlit application can be accessed here:
