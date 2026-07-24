@@ -34,11 +34,15 @@ The live Streamlit application can be accessed here:
 - [Dashboard Design](#dashboard-design)
 - [Testing](#testing)
 - [Unfixed Bugs](#unfixed-bugs)
+- [Repository](#repository)
+- [Clone the Repository](#clone-the-repository)
 - [Deployment](#deployment)
 - [Main Data Analysis and Machine Learning Libraries](#main-data-analysis-and-machine-learning-libraries)
 - [Credits](#credits)
 - [Documentation and References](#documentation-and-references)
 - [Acknowledgements](#acknowledgements)
+- [License](#license)
+- [Final Remarks](#final-remarks)
 
 ---
 
